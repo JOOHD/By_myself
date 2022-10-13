@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8">
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cameldev.mypage.mappers.upload.ArticleFileMapper">
+
+    <!--게시글 첨부파일 추가-->
+    <insert id="addAttach">
+        INSERT tb_article_file (
+            fullname,
+            article_no
+        ) VALUES (
+            #{fullName}, 
+            #{article_no}
+        )
+    </insert>
+
+    <!-- 게시글 첨부파일 조회 -->
+    <select id="getAttach" resultType="stirng">
+        SELECT
+            fullName
+        FROM tb_article_file
+        WHERE article_no = #{article_no}
+        ORDER BY reg_date    
+    </select>
+
+    <!-- 게시글 첨부파일 수정 -->
+    <insert id="replaceAttach">
+        INSERT 
+        INTO tb_arcicle_file (
+            fullname,
+            article_no
+        ) VALUES (
+            #{fullName},
+            #{article_no}
+        )
+    </insert>
+
+    <!-- 게시글 첨부파일 삭제 -->
+    <delete id="deleteAllAttach">
+        DELETE 
+        FROM tb_article_file
+        WHERE article_no = #{article_no}
+    </delete>
+
+    <!-- 특정 게시글의 첨부파일 갯수 갱신 -->
+    <update id="updateAttachCnt">
+        UPDATE tb_article
+        SET file_cnt = (SELECT COUNT(fullname) FROM tb_article_file WHERE article_no = #{article_no})
+        WHERE article_no = #{article_no}
+    </update>
+
+    추가적으로 게시글 등록 시 게시글 번호가 Auto Increase 로 부여되는데 SELECT 문이 아닌 다른 SQL Query(insert, update등)
+    실행하고서 결과를 봐야하는 상황이 생길때 사용하는 방법으로 useGeneratedKeys와 keyProperty 속성을 사용하는 방법이 잇따.
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="article_no">
+        INSERT INTO tb_article (
+            title
+            , content
+            , write
+            , file_cnt
+        ) VALUES (
+            #{title}
+            , #{content}
+            , #{write}
+            , #{fileCnt}
+        )
+    </insert>
+</mapper>

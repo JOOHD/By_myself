@@ -1,0 +1,69 @@
+<!--  매핑 객체 및 SQL 매퍼파일 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<typeAliases>
+<typeAlias alias="board" type="com.company01.springEx01.logic.Board"/>
+</typeAliases>
+
+<mappers>
+<mapper resource="mapper/board-Mapper.xml"/>
+</mappers>
+</configuration>
+
+<!-- mybatis-config.xml
+1. SQL 쿼리를 선언한 Mapper 에서 데이터를 자동 매핑할 수 있도록 VO(DTO) 객체 설정
+아래와 같이 여러개의 VO를 설정할 수 있다.
+-->
+
+<typeAliases>
+	<typeAlias type="VO클래스에 대한 풀네임" alias="Mapper에서 사용할 이름"></typeAlias>
+	<typeAlias type="VO클래스에 대한 풀네임" alias="Mapper에서 사용할 이름"></typeAlias>
+</typeAliases>
+ 
+
+<!-- 
+2. DataSource 에 관한 설정 (DI 방법에 따라 선택. 즉 생략 가능) -->
+
+<environments default="development">
+	<!-- 아래의 <environment~~></environment> 는 여러개의 DB접속 내용을 추가로 설정할 수 있다. -->
+	<environment id="development">
+		<transactionManager type="JDBC" />
+		<dataSource type="POOLED">
+			<property name="driver" value="${jdbc.driverClassName}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</dataSource>
+	</environment>
+</environments>
+ 
+
+<!-- 
+3. Mapper 파일의 위치 설정
+여러개의 Mapper 파일을 설정 할 수 있는데, 단, 각 Mapper 파일 내부의 namespace는 전체 프로젝트에서 유일한 값. -->
+
+<mappers>
+	<mapper resource="Mapper 파일의 위치/파일" />
+	<mapper resource="Mapper 파일의 위치/파일" />
+</mappers>
+
+<!-- Mapper.xml -->
+<mapper namespace="프로젝트 내에서 유일한 이름으로 설정">
+	<select id="해당 Mapper에서 유일한 이름" resultType="config.xml에서 설정한 이름(alias)">
+		SELECT * FROM todo <!-- 여기서 쿼리작성 시 주의사항 : 절대 ;를 사용하면 안된다. -->
+	</select>	
+
+	<select id="해당 Mapper에서 유일한 이름" parameterType="객체, 기본데이터형" resultType="config.xml에서 설정한 이름(alias)">
+		SELECT * FROM todo <!-- 여기서 쿼리작성 시 주의사항 : 절대 ;를 사용하면 안된다. -->
+	</select>
+	
+	<insert id="필수">
+	</insert>	
+	
+	<update id="필수">
+	</update>
+
+	<delete id="필수">
+	</delete>	
+</mapper>

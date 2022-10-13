@@ -1,0 +1,14 @@
+DAO : DB에 접근해 데이터 조회 또는 조작하는 기능을 담당할 오브젝트
+Service : 트랜잭션 단위의 DAO. 여러 DAO를 호출해야 하는 경우 Service에 구현한다.   
+
+*공통 : implements 클래스를 구현할때 클래스명에 'impl'을 붙여주는데 '구현했다.' 정도의 명명으로 보면 된다.
+
+DAO 와 Service 구현 순서
+1.DAO 인터페이스 클래스 구현
+2.DAO implements 클래스 구현
+3.MyBatis Mapper.xml 설정
+4.Service 인터페이스 클래스 구현
+5.Service implements 클래스 구현
+
+Request -> Controller -> Service(interface) -> ServiceImpl -> DAO(insterface) -> DAOImpl -> Service -> View
+

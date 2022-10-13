@@ -1,0 +1,10 @@
+1.DB에 게시판 테이블 생성하기
+2.테이블 컬럼 값들을 DTO(VO) 객체 클래스에 매핑
+3.CRUD 만들기 SQL 문 쿼리 작성하기
+4.MyBatis Mapper 작성(xml)
+5.DAO 인터페이스 만들기
+6.DAO implements 메서드 구현
+7.service 인터페이스 만들기
+8.service implements 메서드 구현
+9.Controller 클래스 만들기
+10.View 역할의 게시판 페이지 board_list.jsp 코드 작성

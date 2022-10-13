@@ -1,0 +1,30 @@
+<!-- 파일 업로드 기능 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="50000000"></property>
+		<property name="maxInMemorySize" value="50000000"></property>
+	</bean>
+
+    <!--
+        value는 어떤 파일의 크기를 받을 것인지 설정을 해줘야합니다.
+        무작정 크게 잡아도 좋지만
+        그러면 데이터 처리하는데 무거워질 수 있습니다.
+     -->
+
+     <form method="post" name="enrollform" enctype="multipart/form-data" action="admin_enroll_product">
+	<div class="form-group">
+		Main Picture <br>
+		<input class="form-control form-control-user" type="file" 
+		name="product_image" id="product_image" onchange="setThumbnail(event);">
+	</div>
+										
+	<div class="form-group">
+		Detail Picture <br>
+		<input class="form-control form-control-user" type="file" multiple="multiple"
+		name="product_detail_image" id="product_detail_image" onchange="setDetailImage(event);">
+	</div>
+</form>
+
+    <!-- 
+        파일업로드를 할때는 form태그 안에 enctype을 multipart/form-data로 설정해야합니다.
+        그리고 파일 하나만 업로드할 때는 상관없지만 여러파일을 업로드할 때는 input 태그 안에 multiple="multiple" 속성을 설정해야합니다.
+    -->

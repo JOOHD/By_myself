@@ -1,0 +1,1355 @@
+Web = WWW(World Wide Web)
+인터넷을 통해 문서를 공개 및 열람할 수 있는 시스템
+웹에서 문서(웹페이지)는 HTML로 대표되는 하이퍼텍스트라는 언어로 구성되어 있고 표시하고 싶은 문장이나 이미지를 자신의 컨텐츠에 표현하게 된다.
+웹의 특징 : 다른 하이퍼텍스트에 대한 참조(하이퍼링크<a>)를 삽입하는 것으로 이어질 수 있다.
+
+HTML = Hyper Text Markup Languege
+하이퍼텍스트를 작성하기 위한 언어, 문장의 표시방법과 하이퍼링크 태그를 사용하여 표현한다.(마크업 언어)
+
+URL = Uniform Resource Locator
+인터넷 컨텐츠를 고유하게 식별하기 위한 구조
+ex)
+http    //  www.example.com /   web/index.html
+계획        호스트명             경로명
+
+URI = Uniform Resource identifier : URL 과 URN 총칭
+
+URL = Uniform Resource Locator : 자원 위치를 나타냄
+
+URN = Uniform Resource Name : 자원명을 나타냄
+
+https = 암호화된 http통신을 나타냄
+
+#HTTP
+-HTTP는 Hyper Text Transfer Protocol의 약자이다.
+-전 세계의 웹 브라우저, 서버, 웹 어플리케이션은 이 HTTP를 사용하여 대화한다.
+-HTTP를 통해 이미지, HTML 페이지, 텍스트, 동영상 등 정보를 빠르고, 정확하고 간편하게 전달한다.
+-HTTP는 신뢰성이있는 전송프로토콜을 사용한다.(전송중 정보가 손상되지 않음을 보장)
+
+위 정의를 보면 HTTP는 어떠한 정보를 주고 받기 위해 사용되는 약속이다.
+한국사람과 중국사람이 있을때 서로 다른 언어를 주고 받는다면 대화가 성립되지 않을 것이다.
+만약 한국사람과 중국사람 사이에 공통되는 언어가 있다면 서로 정보를 주고 받을 수 있을 것이다.
+마찬가지로 네트워크도 대화를 위한 프로토콜이 맞지 않는다면 서로 대화할 수 없다.
+
+HTTP는 요청과 응답이 있다.
+HTTP 요청은 웹 브라우저를 통해 서버로부터 어떠한 정보를 불러오고자 할때 사용하며, 이러한 요청에 서버는 HTTP 응답을 보낸다.
+우리가 주로 사용하는 네이버, 구글 등을 생각해보자.
+처음 주소창에 http://naver.com 과 같이 입력할 것이다.
+그럼 뉴스, 쇼핑 등 다양한 정보를 볼 수 있다. 클라이언트가 주소창을 통해 서버로 부터 'HTTP 요청'을 하였고, 이러한 요청의 대한 응답으로 서버는 클라이언트에게 'HTTP 응답'을 한것이다.
+그렇다면 위처럼 주소를 입력하였을때 어떻게 서버로 부터 요청이 이루어지고 응답받을 수 있는 것일까?
+
+#URI (Uniform Resource Identifier)
+웹 서버의 리소스는 각자 이름을 가지고 있다.
+따라서 클라이언트는 이러한 이름을 통해 원하는 정보를 찾을 수 있다.
+이때 서버 리소스의 이름은 통합 자원 식별자 또는 URI라고 부른다.
+
+이번엔 카카오 사이트 를 접속하여 비전이라는 메뉴를 클릭하여 살펴보겟다.
+메뉴를 클릭하면 http://www.kakaocorp.com/kakao/introduce/vision 와 같이 URI가 나온다.
+
+'https://' :  HTTP 프로콜을 사용하겠다. (뒤의 s는 기존 프로콜에서 보안이 강화된 버전이다.)
+'www.kakaocorp.com' : 카카오 사이트의 주소
+'kakao/introduce/vision' : 리소스 위치
+
+예를 들어서 카카오를 가져온 이유는 URI만 보고도 어떤 리소스를 가져오게 될지 알 수 있을만큼 의미있고 간결하게 URI를 구성하였기 때문이다.
+위 URI 는 카카오홈 -> 카카오 -> 카카오 소개 -> 비전 리소스의 URI의 모습이다.
+#호스트명 : 컨텐츠가 있는 컴퓨터(호스트)명을 나타내는
+
+www     .   www.example.com
+로컬명      상위도메인명
+로컬명은 자유롭게 결정이 가능하며 상위도메인명은 인터넷 고유성을 담보하기 위해 한국인터넷정보센터(KRNIC)가 관리하고
+있습니다
+
+#IP 주소 : 인터넷에 연결된 모든 컴퓨터는 IP주소는 숫자로 식별
+ex)
+192.168.0.1
+IP주소는 위와 같이, 마침표로 구분된 4개의 쌍으로 구성된 숫자로 표현됨
+
+#DNS : 인터넷에서 위 IP주소가 통신하는 컴퓨터를 식별하고 있지만, 브라우저 주소표시줄에 있는 도메인명에서 IP주소로 변환하는 방법
+도메인명과 IP주소 매핑을 가진 컴퓨터가 인터넷에 연결된 상태에서 DNS서버에 문의하여 도메인명에
+해당하는 IP주소를 확인할 수 있는 구조입니다
+
+#Server : 서비스와 기능을 제공하는 측의 컴퓨터
+
+#Client : 서비스를 요구하는 측의 컴퓨터
+
+#WebBrowser : 하이퍼텍스트의 의미를 해석하고 사람들에게 읽기 쉬운 내용으로 제작하여 표시하는 프로그램.
+WWW가 나올 당시 웹브라우저는 현재와 같이 사진이나 돋영상을 포함하여 표시못하고 텍스트만으로 표현하는 것에서 이미지등은 다른 창으로 표시되었다.
+현재는 문자와 이미지를 혼합하여 표시할 수 있는 NCSA Mosatic이라는 브라우저가 1993년 개발 웹 이용 확산
+
+#WebServer : 브라우저에서 접근하는 홈페이지등의 파일이 놓여 있는 서버
+            웹브라우저에서 컨텐츠(HTML)의 요구(요청)이 있고, 알맞은 컨텐츠를 네트워크를 통해 웹브라우저에 반환(응답),
+            하는 것외에도 요청된 컨텐츠가 존재하지 않는 경우, '존재하지 않음' 메시지를 리턴하거나, 다른 웹서버에 요청하도록 안내하는
+            역할을 하는 웹서버는 아래와 같다.
+
+            1.Apache HTTP Server
+            2.IIS(Internet Information Service)
+            3.Nginx
+
+#Proxy : 웹브라우저의 대속적인 존재, 클라이언트(웹브라우저)와 서버 사이에 클라이언트 요청을 프록시 서버에 요청하여 서버에서 응답을 수신하면 클라이언트 
+            ;요청을 프록시 서버에 요청아여 서버에서 응답을 수신하면 클라이언트에 넘져 클라이언트 신원을 숨김 
+
+#HTTP HTML을 주고받은 통신을 위한 위한 것.
+웹브라우저와 웹서버는 인터넷을 통해 컨텐츠를 전달합니다. 이 상호작용은 수신과 메시지 규격은 전세계공통으로
+“HTTP(HyperText Transfer Protocol)이라고 하며 HTTP는 주로 아래와 같이 정의가 되는
+
+#HTTP 응답내용
+상태코드        의미                     설명
+200             OK                      요청이 성공적으로 완료되었음을 나타냄
+302             Found                   요청된 자원이 일시적으로 다른URI에 속해 있다는 것을 나타냄
+401             Unauthorized            사용자인증에 실패한 것으로 나타냄
+403             Forbidden               접근권한이 없기 때문에 서버에 요청 실행을 거부한 것을 나타냄
+404             Not Found               요청URI와 일치하는 리소스를 찾아내지 못한 것을 나타내며, 브라우저에 입력한 URL이 잘못된 경우의 오류
+500             Internal Service Error  CGI프로그램등 서버내부 프로그램 실행에서 오류가 발생했음을 나타냄
+
+HTTP 자원획득 한번 요청에 하니씩
+이미지가 포함된 HTML을 해석한 경우, 첫번째 요청에서 지정된 URL의 HTML파일을 요청한다.
+브라우저는 HTML을 해석하는 과정에서 img태그의 src속성에 지정된 URL에 있는 이미지를 얻기 위해 두번째 요청을 한다.
+(한번의 요청으로 하나의 리소스를 얻을 수 없기 떄문에 여러 이미지가 포함된 페이지에는 이미지수만큼 HTTP 요청이 발생)
+
+#Servlet
+CGI에서 주로 이용되던 Perl이 주로 사용되었지만, 웹브라우저로부터 요청받을 때마다 CGI를 통해 프로세스를 시작하고
+접근이 많으면 처리할 수 없는 문제가 있었습니다. 이런 문제로 대규모 시스템 개발이 가능한 Java를 웹애플리케이션 개발을
+지원하기 위해 Servlet이 제공되었습니다.
+
+#JSP(Java Server Page)
+'Servlet은 복잡한 프로그램일수록 수정하기 어려운 HTML의 한계점이 있어, 이 단점을 보완하기 위해 jsp가 나왔고', 'Servlet은
+java코드에 HTML을 포함하는 구조였지만 반대로 HTML에 Java코드(스크립트릿)을 포함한 구조이다'.
+
+#웹애플리케이션 프레임워크
+대형 웹애플리케이션을 개발하게 되면, JSP 및 Servlet을 사용하여 코딩양이 커지게 되고 또한 다수의 개발자가 각각의
+라이브러리 및 클래스를 생성함에 따라 개별구현된 시스템의 결합이 잘 안되는 문제가 나오기 시작했습니다. 이에 따라, 대형
+웹애플리케이션을 '효율적으로 개발하기 위해 프로그램 재사용하여 응용프로그램을 개발하기 쉽게 만든 응용프로그램
+프레임워크가 만들어져 사용되고 있습니다'. (Java Spring Boot)
+
+#GET 및 POST
+
+#GET
+HTML 입력양식(form)에서 submit 버튼을 클릭하면 브라우저는 form요소의 action속성에 지정된 URL로 이동한다.
+이때 데이터 전달 방법을 지정하는 것이 method속성이며 위에서 get을 지정하고 있기 때무에 GET메소드를 사용하여 폼 입력내용을 전송하도록 함.
+
+GET = 메소드의 단점
+1.GET요청에 의한 매개변수 전달은 쿼리문자열을 통해 어떤 정보를 웹서버에 전송했는지를 제3자에게 노출됨 (보안 취약)
+2.웹서버에서 받은 요청라인이 기록되기 때문에 중요한 정보를 노출시킬 수 있다.
+3.과거에 만들어진 웹서버에서 사용할 수 있는 URL길이가 255자로 제한됨, 긴 데이터를 보낼 경우 처리가 안될 수 있다.
+
+#POST
+POST요청 경우, 매개변수는 메시지 본문에 들어가기 위해 브라우저 주소표시줄에 표시되지 않고 웹서버 로그에도 기록될 가능성이 적다.
+또한, 메세지 본문에는 길이제한이 없고, 매개변수가 많아도 문제가 없다.
+
+#서버 구조 이해하기
+Server란?
+사용자 요구(요청)에 따라 서비스를 제공(응답)하는 컴퓨터와 프로그램을 서버라고 한다.
+예를 들어, 사용자가 "이 웹페이지를 보고 싶다"라고 요청하면, 서버는 웹페이지를 표시하는데 필요한 처리를 수행하고 사용자에게 리턴한다.
+이에 따라 사용자가 사용하는 브라우저에 웹페이지가 표시된다. 
+
+애플리케이션 - 애플리케이션
+인프라 - #(Software) 
+        미들웨어
+        OS
+        #(Hardware)
+        물리적인 서버
+
+#서버에는 OS와 미들웨어가 필요!!!
+서버에는 정말로 중요한 역할을 담당하고 있지만, 서버는 도대체 어떻게 사용자 요구에 대해 응답을 리턴하는 것일까?
+이를 이해하기 위해서는 우선 서버가 어떻게 구성되고 있는지 알아야 한다. 서버 구성요소를 단순화해보자
+'인프라'는 기초를 의미하며, 이를 토대가 되는 응용프로그램이 실행되고 있다고 보면 된다. 하단의 하드웨어는
+물리적인 서버위에 응용프로그램이 여러분들이 만든 과정을 통해 서비스가 실행된다고 보면된다.
+
+이 중간에 있는 두가지 요소는 무엇일까?
+1.OS : 서버나 pc등 컴퓨터를 이동하기 위해 필수적인 소프트웨어
+2.미들웨어 : OS에서 실행하고 응용프로그램과 운영체제 중간에 들어있는 중개역할을 맡는 소프트웨어
+
+여기서 중요한 것은 각각의 정의보다 "서버는 OS와 미들웨어가 셋트로 필요"하다는 것이다.
+
+왜냐하면, 물리적인 서버를 준비되었다고 하더라도, OS와 미들웨어가 설치가 안되어 있으면 그냥 깡통에 지나지 않는다.
+즉, 물리적인 서버에 'XX서버'역할을 하기 위함으로 한다면 OS와 미들웨어가 필요하다. 이 중 역할을 서버에 맡길지는 미들웨어의 역할이다.
+
+#어떤 역할을 서버에 사용하는가?
+물리적인 서버기능을 제공하는 미들웨어 기능에 따라 다양하게 존재한다. 즉, 어떤 역할을 서버가 할지에 대한 여부에 따라 알맞은 미들웨어를 선택하고 설치하게 된다.
+예를 들어, 웹어플리케이션의 경우 (1)웹서버, (2)AP서버 (3)DB서버가 필요하지만 AP서버를 구축하려면 아래와 같이 TOMCAT등 API서버의 서버 소프트웨어(=미들웨어를 설치하게 됩니다.)
+또한 현대의 물리적인 서버에 여러기능 및 역할을 담게 되면, 서버 부하와 위험이 증가하기 때문에 물리적인 서버당 하나의 역할을 부여하는 경우가 많다.
+
+앞에서 "서버는 도대체 어떻게 사용자의 요구에 대해 응답을 리턴하지"라고 이야기 했다. 이에 대해서 서버 자체 구성요소와 구조에대해 정리해보자
+물리적인 서버에 OS나 미들웨어를 내장하고 웹서버, AP서버, DB서버를 구축한다고 가정합시다. 3개의 서버를 각각 어떤 역할을 하고 어떻게 치리가 실행됨으로써 궁금적으로 사용자에게 응답을 리턴하는 것일까
+이를 웹 3레이어 구조라고 설명한다.
+
+1.웹서버 : HTML이나 CSS 같은 정적인 컨텐츠를 클라이언트에게 리턴합니다. 요청된 페이지가 동적컨텐츠가 포함된 경우, AP서버에 처리를 요청하고 AP서버에서 돌아온 처리결과를 웹브라우저에 리턴합니다.
+2.AP서버 : 웹서버로부터 요청을 JAVA, PHP와 같은 언어를 실행하여 처리한다. 예로 JAVA응용프로그램을 만든 경우 AP서버가 Tomcat을 실행하여 MVC에 따라 처리합니다.
+            또한 필요에 따라 DB서버에 데이터를 요청합니다.
+3.DB서버 : 데이터를 저장, 업데이트, 추출하고 요청된 데이터를 AP서버에 리턴한다.
+
+#API
+소프트웨어의 일부분을 개방하여 다른 소프트웨어와 기능을 공유할 수 있도록 한 것이다. 이는 웹상에 공개함으로써 외부에서 누구나 사용도 가능하다.
+또한 기능사용법이나 사용주의사항을 정리해보자.
+
+#API 가 만들어진 이유
+'서비스 개발에 효율화를 높일 수 있다.'
+이미 API를 만들고 싶은 기능이 공개되어 있다면, 그 기능을 가진 프로그램을 만들 필요가 없다.
+따라서 개발기간을 줄일 수 있게되고, 그에 따라 개발비용도 대축 줄일 수 있다.
+
+'새 서비스가 나오도록 도와준다'
+API역할을 공개함으로써 동일한 기능을 가진 서비스 개발이 쉬워진다.
+CRUD는 creat(만들기), read(읽기), update(수정), delete(삭제)라는 4가지 동작을 말한다.
+Restful에서는 'POST'-create, "GET"-Read, 'PUT-'Update, 'Delete'-delete로 대응하고 있으며 CRUD작업할 API로 웹애플리케이션이 동작하도록 지원하다.
+
+#개인 프로젝트 만드는 방법
+프로그램을 공부하다보면 무엇인가 만들어보고 싶은 생각이 들것이다.
+-어떤 기능이 있으면 좋을까?
+-무엇을 만들면 좋을까?
+과 같이 망설임이 있을 것이다. 이런 생각을 벗어나게 하기 위해 개인 프로젝트를 만드는 방법을 소개해본다.
+-개인 포트폴리오를 만들고 싶은 학생
+-학원내 프로그래밍 교육을 마친학생
+
+#무엇을 만들고 싶은지 결정하자.
+우선 무엇을 만들고 싶은지 명확하게 하자. 원래 프로그램을 만들려고 해도, 자신이 무엇을 만들고 싶은지에 명확하게 하고 아이디어를 노트에 써보자
+왜 서비스를 만들려고 하는가?
+
+#개인 프로젝트 만드는 방법
+Github의 Readme에 대한 자신의 생각을 정리해 보자
+Readme에 개발하고 싶은 서비스에 대한 과제 및 해결방법을 작성해 보자(또는 Notion 서비스를 이용해보는 것도 추천)
+
+#2.레이아웃 만들기
+다음은 레이아웃을 만듭니다. 어떤 화면이 필요한지 작성해보자
+ex)
+사용자목록 화면
+사용자 상세화면 등 필요한 화면을 작성합니다.
+여기서 중요한 것이 'UI/UX'고려한 디자인이 중요합니다.
+사용자 친화적인 기능, 이 버튼을 누르면 화면이 이동한다 등 서비스에 필요한 기능을 정리하여 화면을 설계합시다.
+만드는 방법(포인트)
+우선 '메인기능'과 필수기능의 '레이아웃'을 만듬.
+레이아웃에서 공통화하는 곳을 정리함.
+버튼의 배치(어디에 화면전환등을 할지 결정)
+어떻게 공유하여 사용하거나 레이아웃을 조합하는가? 나중에 여기에게 기능을 추가할 때 망가지면 힘들어지기 때문에 우선 큰틀을 만든다고 생각하면 좋다.
+레이아웃은 Adobe XD도구나 Figma도구를 사용하여 그려보는것을 추천
+
+#3테이블 설계 
+앞으로 Readme나 화면설계로 만든 것을 바탕으로 테이블을 설계합니다.
+어떤 테이블이 필요하고 컬럼이 필요한가?
+관계설계를 고려해서 설계한다. 불필요한 컬럼등를 추가하지 않도록 하며, 개발전에 전반적인 테이블을 추가해서 개발을 진행하지만
+도중에 추가해도 문제는 없습니다. 대신 초기에 테이블설계를 제대로 하면 나중에 혼란스럽지 않다.
+
+#4.Issue파일과 Trello
+이제 Github에서 issue관리를 하도록 습관을 들입니다. 필요한 기능은 태그로 관리한다. 개발중에 기능 문제가 나오거나 경우에 따라 어디에서 오류 발생하는지 issue를 통해 문제점 관리가 편해진다.
+
+#Spring Boot
+Spring Boot는 한계점이 보였던 Spring Framework 이미지를 개선햇다. 수요가 높은 기능 위주로 Spring Framework 구조의 핵심을 도입항 웹에 공개가 가능하도록 하여 웹서버(정확하게는 서블릿 컨테이너)
+에 포함되어 있다. 또한, 여러가지 Spring 프로젝트 프레임워크를 쉡게 캡쳐 및 설정할 수 있는 등 빠르게 사용하기 위해 궁리되어 구현되어 있다.
+이런 덕분에 xml을 사용하여 설정이 쉬워진 Java 응용프로그램 프레임워크로 거듭나고 있다.
+
+#1.개발 준비
+Project : Maven, Gradle 은 각각 Java 프로젝트 관리 도구이다. 이것을 만든 응용프로그램의 빌드는 물론, 테스트 및 문서의 자동생성, 오픈소스, 임베디드까지 쉽게 관리해주는 뛰어난 프로젝트이다.
+• Maven: 간단한 도구로 비교적 학습 비용이 낮습니다. XML로 구성되어 있어 어느 정도 직관적으로 이해할 수 있습니다.
+• Gradle: Maven에 비해 자유도가 높은 강력한 도구이다. 특히, 멀티프로젝트 및 멀티 모듈이라는 프로젝트 구성에 있어서 매우 유연한 기술을 지원하고 있따.
+            단, 학습비용이 높은 경향이 있어 처음 시작하는 개발자라면, Maven으로 시작하길 권장한다.
+
+Languege
+Spring Boot는 여러가지 JVM언어를 지원한다. 대표적으로 Java, Kotlin, Groovy가 있다.
+-Java : Java언어를 사용한다.
+-kotlin : Android 개발언어로 채택된 Java 다음 언어로 인식되고 있다. 하지만, Groovy, Scale, C샵의 영향을 더 받는 느낌이다.
+            Java를 채용하고 싶어도 그렇게 할 수 없는 기능을 충분히 내장하고 있어서 후계측면이 강하다.
+-Groovy : Java, Kotlin 컴파일을 전제로 하는 정적 타입 언어이지만, Groovy는 PHP, Python, Ruby등과 같은 동적인 프로그래밍 언어이다.
+            Gradle과 다양한 도구 설정쓰기 DSL(Domain Specific Language)로 채용하긴하지만 응용프로그램에 적용하는 캐이스는 적다.
+
+#Packaging
+프로젝트 최종 결과물 형식을 선택한다.
+JAR(Java 'Ar'chive), Web Application a'R'chive) 모두 JAVA의 jar 툴을 이용하여 '생성된 압축(아카이브) 파일이며 어플리케이션을 쉽게 배포하고 동작시킬 수 있도록
+관련 파일(리소스, 속성파일 등)들을 패키징해주는 것이 주 역할이다'.
+-Jar : Java 클래스 파일등을 포함한 그 프로젝트를 실행 가능한 상태로 정리한 '압축파일' 입니다. (실제로는 zip파일임)
+        .jar 확장자 파일에는 Class와 같은 Java 리소스와 속성 파일, 라이브러리 및 엑세서리 파일이 포함되어 있다.
+        쉽게 JAVA 어플리케이션이 동작할 수 있도옥 '자바 프로젝트를 압축한 파일'로 생각하면 된다. 실제로 JAR 파일은 플레폼에 귀속되는 점만 제외하면 WIN ZIP파일과 동일할 구조이다.
+        JAR파일은 원하는 구조로 구성이 가능하며 JDK(Java Devleopement Kit)에 포함되고 있는 JRE만 가지고도 실행이 가능하다.
+
+-War : Jar이외에도 웹응용프로그램 서버에서 실행하는데 필요한 정보를 추가한 '압축파일'이다. HTML파일등 기존에는 War에 포함된 것이었지만,
+        Spring Boot는 HTML을 포함한 jar에 내장합니다. Spring Boot에서는 기본 서블릿 컨테이너가 아닌 다른 서블릿 컨테이너에서 실행하고 싶은 경우 선택.
+        .war 확장자 파일은 servlet / jsp 컨테이너에 배치 할 수 있는 웹 어플리케이션 압축 파일 포멧이다. JSP, SERVLET, JAR, CLASS, XML, HTML, JAVASCRIPT등 Servlet Context 관련
+        파일들로 패키징 되어있다. WAR는 웹 응용 프로그램을 위한 포멧이기 때문에 웹 관련 지원만 포함하고 있으며 이를 사용하면 웹 어플리케이션을 쉽게 배포하고 테스트 할 수 있다.
+
+        원하는 구성을 할 수 있는 JAR 포멧과 달리 WAR는 WEB-INF 및 META-INF 디렉토리로 사전 정의 된 구조를 사용하며 WAR 파일을 실행하러면 
+        Tomcat, Weblogic, Websphere 등의 웹 서버(WEB) 또는 웹 컨테이너가(WAS) 필요하다.
+
+생성하기
+-개발에 필요한 것
+1.Spring Web : 웹애플리케이션 개발을 위한 기능
+2.Thymeleaf : 템플릿 엔진으로 불립니다. Java에서 동적 HTML을 처리하는 기능을 담당합니다.
+-개발지원 관련
+1.SpringBootDevTool : 디버깅지원 도구
+2.Lombok : 주석이라는 구조를 사용하여 코드 작성을 쉽게 해주는 도구
+3.SpringConfigurationProcessor : IDE와 자체설정파일 연동을 쉽게 해주는 도구
+
+'IDE' : 통합 개발 환경(Integrated Devleopement Enviroment)의 약자이다.
+        IDE는 '코딩, 디버그, 컴파일, 배포 등 프로그램 개발에 관련된 모든 작업을 하나의 프로그램 안에서 처리하는 환경을 제공하는 소프트웨어이다'. 
+        종래의 소프트웨어 개발에서는 컴파일러, 텍스트 편집기, 디버거 등을 따로 사용했다. 이러한 프로그램들을 하나로 묶어 대화형 인터페이스를 제공한 것이 통합 개발 환경이다.
+        최근의 통합 개발 환경(IDE)는 그래픽 사용자 인터페이스 응용 프로그램 개발용 고속 개발 도구가 많다.
+        ex) eclipse, vs studio (하나의 프로그램 안에서 해당하는 언어 JAVA, C 등의 프로그래밍을 처리하는 도구를 뜻한다.)
+
+#IDE에서 프로젝트를 가져오기
+이제 프로젝트용 zip파일을 다운로드 받았다면, IDE에 추가해보자
+
+우선 명령줄에서 Maven으로 빌드해서 실행해보는 방법을 소개한다.
+ex) cd C:\eclipse_workspace\board
+
+JAVA_HOME 환경변수가 설정되어 있는지 확인후 아래 명령어로 빌드해보자. 마지막이 "BIULD SUCCESS"메시지가 출력되면 빌드는 성공
+ex) mnvw clean install
+
+다음으로 Spring Boot 응용프로그램을 시작, 시작되면 로그내용 중 "Started BoardAppication in x.xxx.seconds"메시지가 출력된다.
+ex) mnvw spring-boot:run
+
+#Thymeleaf 에서 SSR하기
+이제 브라우저에 "Hello World" 문자열을 표시하기 위해 Thymeleaf를 사용한다.
+Thymeleaf 자체는 동적으로 HTML을 랜더링하는 것이다. 즉, 표시하는 타이밍이나 사람에 따라 다른 HTML을 리턴하는 것으로 Hellow World만 표시하는 용도로만 사용하는 것은 아쉽지만 첫시작으로 충분하다.
+
+#Thymeleaf
+타임리프는 자바 라이브러리이며, 웹과 웹이 아닌 환경 양쪽에서 텍스트, HTML, XML, JavaScript, CSS 그리고 텍스트를 생성할 수 있는 템플릿 엔진이다.
+웹 에플리케이션에서 VIEW 계층에 보다 적절하지만, 오프라인 환경에서 많은 형태로 처리가 가능하다.
+스프릥 MVC와의 통합 모듈을 제공하며, 애플리케이션에서 JSP로 만든 기능들을 완전히 대체할 수 있다.
+
+참고로 'SSR'(서버 사이드 렌더링)은 "서버측 백엔드에서 HTML을 구축하는 것을 말함" React 및 Vue.js 등은 사용자 브라우저에 전달된 후,
+JavaScript를 사용하여 HTML을 만들어 클라이언트 사이드 렌더링이라고 합니다. Thymeleaf는 HTML을 Java로 재구축하여 브라우저에서 랜더링한다.
+
+#Contorller 만들기
+Tomcat에 접근되면 해당 Java 프로그램이 실행됩니다. Spring Web이 제공하는 기능에서 사용자 접속을 받아 그 처리 방법을 결정 클래스라는 것을 Contorller라고 부른다.
+Contorller역할은 사용자 입력을 받아, 프로그램에 '전달'하는 변환처리와 그 결과를 사용자가 원하는 '출력'하는 변환처리 두 가지 변환을 합니다.
+
+#DI(Dependency Injection)컨테이너
+어노테이션이라는 구조는 주석자체는 해당 클래스에 부여하는 마커 기능이고 그 마커와 붙은 클래스에 다양한 효과가 다른 프로그램에 영향을 미친다.
+예로 @Contorller 어노테이션은 Spring Framework의 DI컨테이너에 이 클래스를 등록한다는 것이다. 결론적으로는 DI컨테이너는 @Controller, @Repository, @Service등 
+여러 주석으로 표시된 클래스 인스턴스를 미리 생성하고 저장한다. 그리고 인스턴스가 필요한 곳에 알맞게 분배하여 일일이 new하지 않고도 인스턴스를 사용가능하다.
+
+Contorller를 DI하여 사용하는 부분은 프레임워크에 은폐되어 보이지 않지만, DI컨테이너에 이어서 개발자는 단순하게 Contorller를 만들기만 하면 된다.
+(DI컨테이너에 있는 인스턴스는 기본적으로 싱글톤이다.)
+
+#LOMBOK
+@RequiredArgsContorller는 LOMBOK이 제공하는 주석이다. 이것은 Final필드이고 @NonNull 어노테이션이다.
+
+#GetMapping
+/hello 다음 경로에서 GET메소드이면, Spring Boot는 HelloController의 hello메소드를 호출한다. 이것은 @GetMapping의 hello메소드 /hello를 지정하고 있기 때문이다.
+
+#Contorller 와 Thymeleaf 대응
+이제 HTML을 리턴하기 위해 Contorller에서 어떤 HTML 템플릿을 리턴할지 지정해야 한다. 그 부분을 처리하는 것이 hello 메소드의 리턴값이다.
+현재 코드에서는 return "hello"로 문자열 이다. Thymeleaf 템플릿의 경우 아래 경로에 HTML 템플릿이 있는지 확인한다.
+/resource/templates/hello.html
+
+#Spring
+Spring은 무엇일까? 스프링은 '자바 기반의 웹 어플리케이션을 만들 수 있는 프레임워크'이다. Spring.io 사이트에서 확안하면 
+'스프링 프레임워크는 현대 자바 기반의 엔터프라이즈 어플리케이션을 위한 프로그래밍 및 Confiuration Model을 제공한다.'
+Python을 이용한 Django, Ruby를 이용한 Ruby on Rails, Javascript를 이용한 Node.js 기반의 웹 서버 개발과 같이 Java 개발자들은 Spring을 사용하여
+웹 서비스를 만들 수 있다. Spring은 수많은 국내 기업과 해외 기업에서 매우 많은 서비스를 만들 때, 사용되고 있다.
+자바 백앤드 개발자는 웹 애플리케이션을 개발할 때, 대부분 스프링을 사용한다고 한다. 스프링의 구조는 아래와 같은 구조로 이루어져 있다.
+
+#Spring 3가지 특징
+1.
+#AOP (Aspect Oriented Programming)
+관점 지향 프로그래밍이라고 불린다. 관점 지향은 쉽게 말해 '어떤 로직을 기준으로 핵심적긴 관점, 부가적인 관점으로 나누어서 보고 그 관점을 기준으로 각각 모듈와하겠다는 것이다.'
+여기서 모듈화란 어떤 공통된 로직이나 기능을 하나의 단위로 묶는 것을 말한다.
+예를 들어 핵심적인 관점은 결국 우리가 적용하고자하는 핵심 비즈니스 로직이 된다. 또한 부가적인 관점은 핵심 로직을 실행하기 위해서 향해지는
+데이터 베이스 연결, 로깅, 파일 입출력 등을 예로 들 수 있다.
+
+AOP에서 '각 관점을 기준으로 로직을 모듈화한다는 것은 코드를을 부분적으로 나누어서 모듈화 하겠다'는 의미이다.
+이때, 소스 코드상에서 다른 부분에 계속 반복해서 쓰는 코드들을 발견할 수있는 데 이겻을 '흩어진 관심사 (Crosscutting Concerns)'
+
+예를들어 A, B, C 클래스에서 동일한 메소드, 필드 코드들이 있다고 하자. 이러한 경우 만약 클래스 A에 B, C에도 있는 같은 메소드들을
+수정해야 한다고 하면 B, C 클래스에 있는 메소들도 전부 코드를 수정해야 한다. (SOLID 원칙에도 위배하며 유지보수도 쉽지 않다.)
+이런식으로 반복되는 코드를 '흩어진 관심사'라고 부른다.
+
+이렇게 흩어진 관심사를 AOP는 Aspect를 이용히서 해결한다. 위의 사진의 아래쪽을 보면 흩어져 있는 부분들을 Aspect를 이용해서 모듈화 시킨 것을 볼 수 있다.
+(모듈화란 어떤 공통된 로직이나 기능를 하나의 단위로 묶는 것을 말한다.) 그리고 개발자가 모듈화 시킨 Aspect를 사진에서 위에 클래스에 어느 곳에 사용해야 하는 지만 정의해주면 된다.
+
+1.'결론적으로 Aspect로 모듈화하고 핵심적인 비즈니스 로직에서 분리하여 재사용하겠다는 것이 AOP의 취지다.'
+2.'공통되게 사용되는 기능적인 역할을 하는 코드를 재활용하여 사용할 수 있도록 만들어주는 방법.'
+
+#AOP 특징
+스프링 AOP를 공부하다 보면 항상 나오는 예제가 있다. 바로 실행 시간을 출력하는 것. 
+ex)
+public interface EvenService {
+    
+    void createEvent();
+    void publishEvent();
+    void deleteEvent();
+}
+
+@Service
+public class SimpleEventService implements EventService {
+
+    @Override
+    public void createEvent() {
+        long begin = System.currentTimeMillis() {
+            try {
+                Thread.sleep(1000);
+            }  catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Created an event");
+            System.out.println(System.currentTimeMillis() - begin);
+        }
+    }
+
+    @OVerride
+    public void publishEvent() {
+        long begin = System.currentTimeMillis();
+            tyr{
+                Thread.sleep(2000);
+            }  catch (InterruptedException e) {
+                e.printStackTrace();
+            } 
+            System.out.println("Published an event");
+        System.out.println(System.currentTimeMillis() - begin);
+    }
+
+    @Override
+    public void deleteEvent() {
+
+    }
+}
+위와 같이 EventService 인터페이스를 구현한 SimpleEventService 클래스가 존재하는 상황이다.
+createEvent(), publicshEvent() 메소드의 실행 시간을 측정하려고 한다. 하지만 위의 코드의 예시는 단순히 메소드가 2개만
+존재할 뿐이기에 별거 아닐 수 있지만 실제 프로젝트로 치면 엄청나게 많은 중복 코드가 필요할 것이다.
+만약에 메소드가 30개만 됐다고 해도 엄청난.. 중복이 일어난다. 이러한 상황에서 사용할 수 있는 것이 AOP라고 얘기했다.
+
+AOP는 어떤 방법을 사용했기에 기존 코드는 수정하지 않고 메소드들의 성능 측정을 할 수 있는 것일까요? 바로 '프록시 패턴'을 사용하기 때문입니다.
+
+#프록시 패턴 
+'프록시 패턴' 의 목적은 기존 '코드 변경 없이' 접근 제어 또는 부가 기능을 추가 하기 위해서이다.
+여기서 위의 EventService 인터페이스를 구현하는 프록시 클래스를 만들어 보자.
+ex)
+@Primary
+@Service
+public class ProxySimpleEventService implements EventService {
+
+    @Autowired
+    private SimpleEventService simpleEventService;
+
+    @Override
+    public void createEvent() {
+        long begin = System.currentTimeMillis();
+        simpleEventService.createEvent();
+        System.out.println(System.currentTimeMillis() - begin);
+    }
+
+    @Override
+    public void publishEvent() {
+        long begin = System.currentTimeMillis();
+        simpleEventService.publishEvent();
+        System.out.println(System.currentTimeMillis() - begin);
+    }
+
+    @Override
+    public void deleteEvent() {
+
+    }
+}
+위의 Proxy 클래스의 코드를 보면 필드로 실제 핵심 코드를 담당하는 SimpleEventService를 가지고 있다.
+
+즉, 이러한 구조를 가진 패턴을 프록지 패턴이라고 하는데, 기존의 SimpleEventService 클래스의 코드에는 성능 측정하는
+코드를 작성하지 않아도 된다는 장점이 있다. 하지만 이러한 방식도 메소드가 많다면 코드의 중복이 많이 일어날 것이고 매번 Proxy 클래스도 직접
+맏르어야 한다는 큰 단점이 존재한다. 그래서 이러한 단점을 해결하기 위해 나온 것이 'Spring AOP' 이다.
+
+스프링도 위에서 본 프록시를 이용해서 AOP를 구현하고 있다. 'AOP의 핵심 기능은 코드를 수정하지 않으면서 공통 기능의 구현을 추가하는 것이라고 강조하고 있다'.
+핵심 기능에 공통 기능을 추가하는 방법에는 아래와 같이 3가지 방법이있다.
+
+-컴파일 : 자바 파일을 클래스 파일로 만들 때 바이코드를 조작하여 적용된 바이트코드를 생성
+-로드 타임 : 컴파일은 원래 클래스 그대로 하고, 클래스를 로딩하는 시점에 끼워서 넣는다.
+-런타임 : A라는 클래스를 빈으로 만들 때 A라는 타입의 프록시 빈을 감싸서 만든 후에, 프록시 빈이 클래스 중간에 코드를 추가해서 넣는다.
+
+스프링에서 많이 사용하는 방식은 프록시를 이용한 세 번째 방법입니다. 
+스프링 AOP는 프록시 객체를 자동으로 만들어줍니다. 따라서 위에서 본 ProxySimpleEventService 클래스 처럼 상위 타입의 인터페이스를 상속 받은 클래스를 직접 구현할 필요가 없습니다. 단지 공통 기능을 구현한 클래스만 잘 구현하면 됩니다.
+
+2.
+#PSA (Portable Service Abstraction)
+우리는 Spring의 AOP가 Proxy 패턴을 발전시켜 만들어 졌다는 것을 이전 포스팅들을 통해서 알게되었다.
+그리고 FactoryBean을 통해 Proxy가 Bean이 생성될때 자동으로 생성 되는 것 또한 알게되었다.
+
+내부적으로 트랜잭션 코드가 추상화되어 숨겨져 있다. 이렇게 추상화 계층을 사용하여 어떤 기술을 내부에 숨기고 개발자에게 편의성을 제공해주는 것을 
+'서비스 추상화'
+
+DB에 접근하는 방법은 여러가지가 있지만, 기본적으로 JDBC를 통해 접근할 수 있음 ORM을 이용하고자한다면 JPA를 통해 접근할 수도 있다.
+'하나의 추상화로 ㅇ러 서비스를 묶어둔 것을 Spring에서 Portable Service Abstraction'
+
+#Spring 특징
+-Spring은 '자바 객체와 라이브러리들을 관리해주면, 톰갯과 같은 WAS가 내장되어 있어 자바 웹 애플리케이션을 구동'할 수 있다.
+-Spring은 경량 컨테이너로 자바 객체를 직접 Spring 안에서 관리한다. 객체의 생성 및 소멸과 같은 생명 주기을 관리하며, Spring 컨테이너에서 필요한 객체를 가져와 사용한다.
+-Spring의 가장 큰 특징으로 IOC 와 DI가 많이 언급된다.
+    IOC.InversionOfContorl = 제어의 역전
+    1.일반적으로 처음에 배우는 자바 프로그램에서는 '각 객체들이 프로그램의 흐름을 결정하고 각 객체를 직접 생성하고 조작하는 작업(객체를 직접 생성하여 메소드 호출)'을 했따.
+    즉, 모든 작업을 사용자가 제어하는 구조였다. 
+    예를 들어, A 객체에서 B 객체에 있는 메소드를 사용하고 싶으면, B 객체를 직접 A객체 내에서 생성하고 메소드를 호출한다.
+    2.하지만 'IOC가 적용된 경우, 객체의 생성을 특별한 관리 위임을 주체에게 맡긴다.'이 경우 '사용자는 객체를 직접 생성하지 않고, 객체의 생명주기를 컨트롤하는 주체는 다른 주체가 된다'.
+    즉, #사용자의 제어권을 다른 주체에게 넘기는 것을 IOC .
+    3.요약하면 Spring IOC란 "클래스 내부의 객체 생성 -> 의존성 객체의 메소드 호출"이 아닌, #스프링에게 제어를 위임하여 스프링이 만든 객체를 주입 -> 의존성, 객체의 메소드 호출
+    스프링에서는 모든 의존성 객체를 스프링이 실행될때 만들어주고 필요한 곳에 주입해준다.
+
+    DI.DependencyInjection = 의존성 주입
+    1.어떤 객체(B)를 사용하는 주체(A)가 객체(B)를 직접 생성하는게 아니라 
+    '객체를 외부(Spring)에서 생성해서 사용하려는 주체 객체(A)에 주입시켜주는 방식'
+    #즉, 클래스간의 의존관계를 스프링 컨테이너가 자동으로 연결해 주는 것
+    Spring Framework의 IoC에서 관리하고 있는 bean들 중에서 필요한 것을 객체에 주입하는 것을 말한다.
+    Spring은 기본적으로 '@Autowired' 어노테이션을 이용한 의존성 주입을 제공한다. 
+    사용하는 주체(A)가 사용하려는 객체(B)를 직접 생성하는 경우 의존성(변경사항이 있는 경우 서로에게 영향을 많이 준다.)이 높아진다.
+    하지만, 외부(Spring)에서 직접 생성하여 관리하는 경우에는 A와B의 의존성이 줄어든다.
+    -> OOP(다형성과 상속, interface) 이건가?
+    
+    1.ex) #첫번쨰로 생성자를 통해 Bean의 의존성 주입을 할 수 있따.
+    @Component
+    public class SampleController {
+        private SampleRepository sampleRepository;
+
+        @Autowired
+        public SampleController(SampleRepository sampleRepository) { #겍체 생성
+            this.sampleRepository = sampleRepository;
+        }
+    }
+
+    2.ex) #두 번째로 보다 간편하게 필드(Property)에 직접 @Autowired 어노테이션을 추가해 의존성을 주입할 수 있다.
+    @Component
+    public class SampleController {
+        
+        @Autowired
+        private SampleRepository sampleRepository;
+    }
+
+    3.ex) #마지막으로 Setter를 통해 의존성을 주입할 수 있다.
+    @Component
+    public class SampleController {
+        private SampleRepository sampleRepository;
+ 
+        @Autowired
+        public void setSampleRepository(SampleRepository sampleRepository) {
+            this.sampleRepository = sampleRepository;
+        }
+    }
+
+#Spring Project 구조
+1.톰캣(WAS) 구동(web.xml)
+
+스프링 MVC 프로젝트를 구동하면 WAS가 먼저 구동된다. '스프링을 사용했다고 해서 기존 서블릿을 이용하던 구조를 사용하지 않는 것은 아니다'.
+스프링 또한 자바의 서블릿 컨테이너 구동 방식 위에서 구동되는 라이브러리 집합체이다. 따라서 가장 먼저 WAS, 즉 서블릿 컨테이너가 구동된다.
+
+1-1 Context Path 설정
+
+톰갯의 "server.xml" 파일을 보면 Context Path와 프로젝트(어플리케이션)의 이름이 매핑되어 있다. 이 Path를 달고 들어오는 URL은 해당 프로젝트에 대한 요청이라는 뜻이다.
+여기서 path를 수정해줄 수 있고, 만약 "/"로 바꾸어준다면 별도의 Context path없는 URL로 바로 접속할 수 있게 된다.
+ex)
+<Context docBase = "hssweb" path = "/" reloadable = "true" source = "org.eclipse.jst.jee.server:hssweb"/>
+
+1-2 루트 컨테이너 생성
+
+구동될 때 참조하는 설정 파일은 프로젝트 안에 있는 "WEB-INF/web.xml"파일이다. 먼저 아래 코드는 "루트 컨테이너"에 대한 설명이다
+rootConainer = 어플리케이션(프러젝트 단위)에 #딱 하나만 생기는 최상위 부모 컨테이너이다.
+                스프링 컨테이너는 루트 컨테이너가 하나, 그리고 각 서블릿들이 하나씩 가지는 컨테이너, 그리고 개발자가 직접 만드는 컨테이너 세 가지 종류가 있다.
+
+SpringContainer = ApplicationContex(객체를 담고있는 공간?)
+보통 루트 컨테이너에서는 웹기술과 관계 없는 자원에 대한 빈(Bean)을 만들어 관리한다. 디폴트로는 "root-context.xml" 파일을 param으로 제공해주지만 필요 시 새로운 파일을 만들어서 param으로 추가할 수 있따.
+"어플리케이션 컨테스트"라고도 부른다.
+
+servletContainer = 1.톰캣처럼 서블릿을 지원하는 WAS를 서블릿 컨테이너라고 함.
+                   2.서블릿 컨테이너는 서블릿 객체를 생성, 초기화, 호출, 종료하는 생명주기 관리
+                   3.서블릿 객체는 싱글톤으로 관리
+                    -고객의 요청이 올 때 마다 계속 객체를 생성하는 것은 비효율적이다
+                    -최초 로딩 시점에 서블릿 객체를 미리 만들어두고 재활용
+                    -모든 고객 요청은 동일한 서블릿 객체 인스턴스에 접근
+                    -공유 변수 사용 주의
+                    -서블릿 컨테이너 종료시 함께 종료
+                   4.JSP도 서블릿으로 변환 되어서 사용
+                   5.동시 요청을 위한 멀티 쓰레드 처리 지원
+
+루트와 서블릿용 컨테이너는 스프링 MVC 구조에 따라 설정 파일에 있는 내용대로 자동으로 생성된다.' 개발자가 XML설정 파일 외 자바 코드에서 생성에 관여하는 부분은 없다.'
+루트 컨테이너에는 모든 서블릿들에서 공유할 전역적인 설정과 빈을 생성해 사용하고, 각 서블릿용 컨테이너에서는 해당 서블릿 고유의 설정과 빈을 생성해 사용하게 된다.
+서블릿용 컨테이너는 루트 컨테이너의 자식이며, 부모 컨테이너로부터 필요한 걸 가져와 사용할 수 있지만 그 반대는 불가하다.
+
+1-3 URL 매핑
+
+서블릿 컨테이너가 클라이언트로부터 URL 요청을 받았을 때 어떤 서블릿 클래스로 넘겨줄지 매핑해주는 설정이다.
+원래 개발자가 직접 서블릿을 만들었었지만 스프링에서는 "DispatcherServlet" 클래스를 제공해준다. 아래 코드는 이 서블릿으로 모든 요청("/")을 매핑해주겠다는 의미이다.
+처음 서블릿을 생성할 때 서블릿 컨테이너의 설정 파일인 "servlet-context.xml"파일을 파라미터로 제공해주겠다는 의미이다.
+
+1-4. 필터 설정 적용 
+
+필터 설정은 서블릿으로 요청이 들어가기 전, 그리고 최종 응답 전에 공통적으로 수행되어야 할 기능을 구현해주는 설정입니다. 
+가장 필수적이면서 많이 쓰이는 용도가 인코딩입니다. 필터 설정 덕분에 기존 서블릿에서 일일이 요청객체마다 처리해주던 인코딩을 별도로 안해줘도 됩니다. 
+그 외에도 스프링 시큐리티 등 여러 공통 처리에 대한 필터를 설정할 수 있습니다.
+
+2-1 DispatcherServlet 로드 및 스프링 컨테이너 생성
+
+첫 요청이 들어오면 서블릿 컨테이너가 URL 매핑된 서블릿을 찾아 메모리에 로드시킨다. JVM의 코드 영역에 서블릿의 소스코드가 로드되고, 힙 영역에 기타 참조객체가 로드된다고 보면 된다.
+스프링 MVC 프로젝트에서는 프론트 컨트롤러의 서블릿 역할로 이미 스프링에서 만들어준 "DispatcherServlet" 클래스를 사용하게 된다. 물론 커스터마이징도 가능하다.
+
+#Spring 기본 동작 순서
+1.Client(IE, Chrome...) : URL로 접근하여 정보를 요청
+2.View
+3.DispatcherServlet(web.xml에 포함, Spring Framework에서 제공)
+4.HandlerMapping : 해당 요청을 매핑한 컨트롤러가 있는지 검색
+5.Controller : 처리요청 (bean 등록) ex) <bean id = "xxx" class = "org.springframework.xxx"/>
+6.Service (DTO)
+7.DAO (Data Accepaion Object)
+8.DB (DTO)
+
+#Spring 실행 순서
+1.클라이언트가 요청을 보낸다.
+예를 들어, 사용자가 블로그 포스팅을 읽기 위해 http://localhost:8080/post/view 라는 블로그 글 조회 요청을 보냈다고 가정해보자.
+
+2.클라이언트의 요청을 'DisptcherServlet' 이 가로챈다.
+DispatcherServlet이란 무엇일까? 'dispatch' 의미는 '보내다'라는 뜻을 가지고 있다. 즉, 가장 앞단에서 HTTP 프로토콜로 들어오는 모든 요청을 가장 먼저 받아서 적합한 컨트롤러에 위임해주는
+(Front Controller)인 셈이다. 그렇다고 모든 요청을 가로채는 건 아니고 'web.xml에 등록된 내용만 가로챈다'. 아래 소스는 초기 web.xml에 등록된 내용만 가로챈다.
+아래 소스는 초기 web.xml 파일의 일부이다.
+
+3.가로첸 요청을 'HandlerMapping'에게 보내 해당 요청을 처리할 Controller 를 찾는다.
+HandlerMapping은 실제 '클라이언트의 조회 요청을 수행할 Handler 를 찾아주는 역할'을 한다. 아래 소스처럼 클래스에 @Controller 어노테이션을 붙이면 servlet-context.xml 에서는 이를 인식하여 컨트롤러로 등록.
+그리고 컨트롤로에서 '@RequestMapping' 어노테이션을 사용하여 /post/view 값을 설정한다면 해당 컨트롤러의 해당 메서드를 인식하고 찾아가게 된다.
+ex)
+    @Controller
+    class HomeController {
+
+        @RequestMapping(value = "/post/view")
+        public String view() {
+            return "";
+        }
+    }
+
+4.실제 요청 처리
+이제 컨트롤러에서 비즈니스 로직을 거쳐 DB에서 포스팅 글 조회 기능을 수행한다. 
+즉, Controller -> Service -> DAO -> DB -> DAO -> Service -> Controller 의 순서로 진행이 된다.
+컨트롤러에서 출발하여 DB에서 값을 가져온 후 다시 컨트롤러로 돌아오는 구조인 셈이다.(아래 2개의 변수는 DB에서 값을 가져왔다고 가정)
+ex)
+    @Controller
+    public class HomeController {
+        
+        @RequestMapping(value = "/post/view")
+        public String view() {
+
+            # DB에서 포스팅 정보를 가져왔다는 가정
+            String title = "DB에서 조회한 포스팅 제목";
+            String content = "DB에서 조회한 포스팅 내용";
+
+            return "home";
+        }
+    }
+
+5.viewResolve를 통해 view 화면을 찾는다.
+이제 DB에서 조회한 title, content를 실제 화면으로 보여줘야 한다. 아래 소스는 Model 객체를 이용하여 'addAttribute' 함수를 이용하여 화면에 보여줄 값을 세팅하고 있다.
+return 값은 "home"이라고 명시되어 있는데 이는 home.jsp 파일로 보여주겠다는 의미이다. 이 문자열은 나중에 servlet-context.xml에 설정된 prefix와 suffix 정보를 참조하여 /WEB-INF/views/home.jsp 파일을 찾는 정보 제공
+'최종적으로 컨트롤러는 결과를 출력할 뷰와, 뷰에 전달할 객체를 담고 있는 Model 객체를 리턴한다'.
+ViewResolve는 컨트롤러에서 보내온 view이름(여기서는 home)을 토대로 view 화면을 찾게 된다.
+ex)
+    @Controller
+    public class HomeController {
+        
+        @RequestMapping(value = "/post/view")
+        public String view() {
+
+            # DB에서 포스팅 정보를 가져왔다는 가정
+            String title = "DB에서 조회한 포스팅 제목";
+            String content = "DB에서 조회한 포스팅 내용";
+
+            model.addAttribute("title", title);
+            model.addAttribute("content", content);
+            return "home";
+        }
+    }
+
+6.찾은 view 화면을 View에 보내면 이 결과를 다시 DispatcherServlet 에 보내고, DispatcherServlet 는 클라이언트에게 결과(포스팅 조회)를 전송한다.
+아래는 view 화면 (home.jsp)의 모습이다. $를 이용하여 컨트롤러에서 Model 객체를 이용하여 설정한 파라미터 값들을 설정하면 된다.
+ex)
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+    <html>
+        <body>
+            <h1>${title}</h1>
+
+            <P>${content}</P>
+        </body>
+    </html>                                             
+여기까지 진행이 되었다면, 사용자가 http://localhost:8080/post/view.do 로 조회 요청을 하였을때, DB에서 가져온 결과값이 출력이 될 것이다.
+JSP파일을 Model 객체를 넘겨받고 그 Model 객체 안의 속성 값들의 정보를 ${} 기호에 표현된 부분에 치환하다.
+예로 들어 ${title}은 Model에서 addAttribute 메서드를 통해 추가했던 title 변수의 정보에 담고 있다.
+
+#web.xml 설정 파일
+web.xml은 WAS가 최초 구동될 떄 WEB-INF 디렉토리에 존재하는 web.xml을 읽고, 그에 해당하는 웹 애플리케이션 설정을 구성한다. '한마디로 각종 설정을 위한 설정파일이다'.
+ex)
+    <?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://Java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	#<!-- 첫번째 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+	
+	#<!-- 두번째 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	#<!-- 세번째 -->
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	#<!-- 네번째 -->
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+각 태그를 세부저그로 살펴보면 크게 4개 태그로 분류할 수 있다.
+
+<context-param> : 모든 서블릿 및 필터가 공유하는 '루프 스프링 컨테이너 정의'
+<listener> : 모든 서블릿 및 필터가 공유하는 스프링 컨테이너를 작성한다.
+<servlet> : 'DispatcherServlet 을 구현하기 위해' 어떤 클래스를 이용해야 할지와 '초기 파라미터 정보를 포함'한다.
+    <servlet-name> : 서블릿명을 지정하면 해당 이름을 가지고 다른 설정 파일에서 해당 서블릿 정보를 참조한다.
+    <servlet-class> : 어떤 클래스를 가지고 DispatcherServlet을 구현할 것인지를 명시하고 있다.
+    <init-param> : 초기화 파라밈터에 대한 정보. servlet에 대한 설정 정보가 여기에 들어간다. 만약 초기화 파라미터에 대한 정보를 기술하지
+                    않을 경우 스프링이 자동적으로 스프링 컨테이너를 생성한다.
+    <load-on-statrup> : '서블릿이 로딩될 때 로딩 순서를 결정하는 값'. 톰캣이 구동되고 서블릿이 로딩되기 전 해당 서블릿에 요청이 들어오면 서블릿이
+                        구동되기 전까지 기다려야 한다. 이 중 우선순위가 높은 서블릿부터 구동할 때 쓰이는 값이다.
+<servlet-mapping> : servlet에서 지정한 패턴으로 클라이언트 요청이 들어오면 해당 가진 servlet에게 이 요청을 토스하는 정보를 기술한다. 
+
+#root-context.xml 설정 파일
+ex)
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+</beans>    
+이 파일은 최초에는 텅 비어있다. 다른 모든 웹 구성요소에 표시되는 공유 리소스를 정의하는 곳이다, 이곳에서는 view와 관련되지 않은 객체를 정의한다.
+예를 들어 Service, Repository(DAO), DB 등 비즈니스 로직과 관련된 설정을 해주는 곳이다.
+
+#servlet-context.xml
+ex)
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlets request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<context:component-scan base-package="com.company.devpad" />
+	
+</beans:beans>
+다음은 servlet-content.xml 파일이다. 여기서 주목해야 하는 부분은 prefix와 suffix 부분이다. 서블릿 설정으로 prefix(접두사)와 suffix(접미사)를 붙여주는
+역할을 담당한다. 즉, 우리가 일일이 전체경로와 .jsp를 붙이지 않아도 되도록 도와준다.
+그 다음으로 <context:component-scan base-package="com.company.devpad" /> 부분을 보자.
+이 부분은 스프링에서 사용하느 bean을 일일이 xml에 선언하지 않고도 필요한 것을 annotaion을 자동으로 인식하게 하는 역할을 한다.
+
+<annotaion-driven> : @Controller 어노테이션을 감지하여 해당 클래스를 Controller로 등록할 수 있도록 해주는 태그
+<resource> : 정적인 html문서 같은 웹 리소스들의 정보를 기술하는 태그
+<beans:bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver"> : Controller가 Model를 리턴하고 DispatcherServlet이 
+                    jsp 파일을 찾을때 쓰이는 정보를 기술하는 태그 "home"이라는 문자열을 반환하면 /WEB-INF/views/ 경로에서 접미사가 .jsp인
+                    해당 파일을 찾는다.
+<context:component-scan> : Java 파일의 @Component로 등록된 Bean 객체를 찾도록 해주는 태그
+
+#Spring Boot
+'스프링 부트는 스프링을 더 쉽게 이용하기 위한 도구'라고 볼 수 있다. 스프링 이용하여 개발을 할 때, 이것저것 세팅을 해야 될
+요소들이 많다. User는 스프링을 사용하기 위해서 이것저것 다양한 설정을 직접 해줘야된다는 문제점이 있다. 개발자가 실행환경이나 의존성 관리 등의
+인프라 관련 등에 쓰는 에너지가 소요된다. 프로그래밍을 하는 데 있어 매우 중요한 '비즈니스를 만들기 위한 프로그래밍'에 조금 더 에너지를 투입할 수 있게 Spring의 많은 부분을 자동화하였고, 많은 
+개발자들이 현재 Spring Boot을 이용하여 개발을 진행하고 있다.
+
+-스프링을 편리하게 사용할 수 있도록 지원, 최근에는 기본으로 사용
+-단독으로 실행할 수 있는 스프링 애플리케이션을 쉽게 생성
+-Tomcat 같은 웹 서버를 내장해서 별도의 웹 서버를 설치하지 않아도 됨
+-손쉬운 빌드 구성을 위한 starter 종속성 제공
+-스프링과 3rd path(외부) 라이브러리 제공
+-매트릭, 상태확인, 외부 구성 같은 프로덕션 준비 기능 제공
+-관례에 의한 간결한 설정
+
+#Framework
+프레임워크라는 개념을 접하기 전에 '부트스트랩'이란 용어를 먼저 알게 되었다.
+웹 프로젝트를 개발하기 위한 좋은 툴이라는 것을 듣게 되었다.
+그래서 부트스트랩이 무엇인지 자료 조사를 해본 결과, '프레임워크'의 종류 중 하나라는 것을 알게되었다.
+그렇다면 프레임워크란 무엇인가? 
+"프레임워크란, 소프트웨어의 구체적인 부분에 해당하는 설계와 구현을 재사용이 가능하게끔 일련의 협업화된 형태로 클래스들을 제공하는 것"
+보통 Framework는 라이브러리라는 개념과 비교해서 많이 설명된다.
+
+-핵심 기술 : 스프링 DI 컨테이너, AOP, 이벤트, 기타
+-웹 기술 : 스프링 MVC, 스프링 WebFlux
+-데이터 접근 기술 : 트랜잭션, JDBC, ORM 지원, XML 지원
+-기술 통합 : 캐시, 이메일, 원격접근, 스케줄링
+-테스트 : 스프링 기반 테스트 지원
+-언어 : 코틀린, 그루비
+=최슨에는 스프링 부트를 통해서 스프링 프레임워크의 기술들을 편리하게 사용
+
+#Framework vs library
+'라이브러리란 자주 사용되는 로직을 재사용하기 편리하도록 잘 정리한 일련의 코드들의 집합을 의미한다'
+쉽게 설명하자면 '프레임워크는 자동차의 프레임'즉, 기본적으로 구성하고 있는 뼈대를 말한다.
+'라이브러리는 자동차의 기능을 하는 부품'을 의미한다.
+예를 들어, 자동차를 굴러갈 수 있게 하는 바퀴, 어두운 밤을 비출 수 있는 헤드라이트, 비 올 때 창문을 닦아주는 와이퍼 등이 라이브러리라고 할 수 있다.
+
+한 번 정해진 자동차의 프레임은 바꾸질 못한다.
+소형차를 만들기 위해 뼈대를 사용하는데, 이 뼈대로 SUV를 만들 수는 없다.
+그러나 바퀴나, 선루프, 헤드라이트 등은 비교적 다른 종류로 쉽게 바뀔 수 있다.
+사실 자동차를 만들기 위해서 자동차의 프레임과 부품들을 가져다 쓰지 않아도 된다. 프레임을 일일이 만들고, 부품을 일일이 만들어서
+자동차를 만들어도 된다. 그러나 너무 비효율적이다. 그래서 프레임워크와 라이브러리가 존재하는 것이다.
+내가 정말로 원하는 기능을 구현하기 위해 기본적인 뼈대롸 부품을 가져다 쓰겠다는 것이다.
+자동차에 하늘을 나는 기능을 온전히 구현하기 위해 자동차의 프레임과 부품을 아웃소싱 하겠다는 것이다.
+
+#Spring Framework란?
+Spring Framework는 2004년 출시된 오픈소스 프레임워크에서 의존성 주입과 관점지형 프로그래밍등 시스템 개발 및 프로그램 수정이 가능한 구조로 되어 있다.
+다른 프레임워크와 비교해도, 프레임워크는 범용성이 높고 웹시스템과 웹서비스 이외에도 클라우드 및 모바일 시스템 개발에 적합하다.
+프레임워크는 집합체로 기능에 따라 다수의 프레임워크로 구성되어 있다. 이에 따라 '다양한 개발이 가능하지만 기능별 구별이 어렵다.'
+
+#Spring Boot는?
+Java 기반으로 웹애플리케이션 개발을 빠르고 효율적으로 하는 방법을 제공하는 프레임워크이다. '스프링 프레임워크의 기능 구분이 어렵다는 단점을 해결하기 위해 만들어졌다'.
+부트도 프레임워크 기반의 프레임워크 중 하나이다. 주요 기능으로는 여려개의 프레임워크를 사용시 발생하는 Bean정의와 XML설정을 가능하게 하여 자동설정하는 기능이 있습니다.
+그외에도 코드를 작성하지 않아도 프로그램의 처리할 수 있도록, Javadoc과 마찬가지로 '주석을 작성할 수 있다'.
+또한, Spring Boot는 'Spring MVC라는 다른 프레임워크의 사양을 계승'하고 있기 때문에, 프레임워크를 구성하는 프레임워크 중 하나로 포함되고 있다.
+
+#Spring Framework와 Spring Boot의 차이점
+1.Spring Framework는 'Java응용프로그램 개발을 위해 만들어진 프레임워크의 집합체'
+2.Spring Boot는 '집합체로 묶어진 기능을 분리하여 다시 붙이기 쉽게' 하기 위한 프레임워크
+
+#Spring Boot란
+특징
+1.XML설정 파일에 대한 설명이 필요없다.
+2.JAR파일에 웹컨테이너를 포함할 수 있다.
+3.코딩 양이 줄어든다.
+4.의존성 주입 기반이다.
+5.STS와 궁합이 좋다.
+6.사용자 수가 많다.
+
+#XML설정 파일에 대한 설명이 필요없다.
+Spring Boot는 복잡한 'XML설정파일을 없에고', 기본설정을 자동화하고 있다. 일반적으로 XML파일에 기술하는 설정작업은 복잡한 것을 시도할 정도로 XML도 복잡해지고 오류 특정이 어려워진다.
+그래서 Spring Boot는 필요한 부분을 최소화한 설정만으로 웹응용프로그램을 실행할 수 있다.
+
+#JAR파일에 컨테이너를 포함할 수 있다.
+서버측에 웹컨테이너를 설치하지 않고, JAR파일 단독으로 웹애플리케이션 개발을 할 수 있다.
+
+#Web Server (정적 페이지[Static Page])
+'데이터베이스에서 정보를 가져오거나 별도의 서버에서의 처리가 없어도', 사용자들에게 보여줄 수 있는 페이지, 어떠한 사용자가 오던간에 동일한 페이지를 보여준다.
+클라이언트의 request을 받아 정적인 컨텐츠(html, css, js)를 response하는 서버
+ex)
+Apache, Ngix, IIS, WebtoB 등
+
+흔히 웹 서버라고 하면 초기에 Django, Node.js와 같은 것들을 떠올릴 수 있지만, 엄밀하게 따지면 이들은 WAS라고 보는 것이 맞는것 이다.
+그렇다면 웹 서버는 무엇일까?
+웹 서버는 크게 2가지 역할이다.
+1.웹 서버는 '클라이언트가 요청한 정적인 콘텐츠를 HTTP 프로토콜을 통하여 제공해주는 서버이다.'위에서 언급한 정적 페이지를 보내준다.
+2.다른 역할으로는 동적인 요청이 클라이언트로부터 들어왔을 때, 해당 요청을 웹 서버에서 처리할 수 없기 때문에 컨테이너로 보내주는 역할.
+
+#WAS (Web Application Server) (동적 페이지[Dynamic Page])
+서버에서 데이터베이스에서 정보를 가져와서 처리하는 것처럼, '어떠한 요청에 의하여 서버가 일을 수행하고 해당 결과가 포함된 파일을 보여주는 페이지'
+클라이언트의 request을 받아 DB조회나, 어떤 로직을 처리해야하는 동적인 컨텐츠를 response하는 서버
+ex)
+Tomcat, WebLogic, WebSphere, Jeus, JBoss 등
+
+웹 서버로부터 오는 동적인 요청을 처리하는 서버를 말한다. 웹 서버와 컨테이너를 붙여놓은 서버 라고 보시면 될 듯하다.
+WAS를 위키백과에서는 아래와 같이 정의했다.
+웹 애플리케이션 서버는 '웹 애플리케이션'과 '서버' 환경을 만들어 동작시키는 기능을 제공하는 소프트웨어 프레임워크이다.
+인터넷 상에서 HTTP를 통해 사용자 컴퓨터나 장치에 애플리케이션을 수행주는 '미드웨어(소프트웨어 엔진)'으로 볼 수 있다. 
+웹 애프리케이션 서버는 동적 서버 콘텐츠를 수행하는 것으로 일반적인 웹 서버와 구별이 되며, 주로 데이터베이스 서버와 같이 수행이된다.
+한국에서는 일반적으로 "WAS" 또는 "WAS S/W"로 통칭하고 있으며 공공기관에서는 "웹 응용 서버"로 사용되고, 영어권에서는 "Application Server"라고 불린다.
+
+ex)
+예를 들어서, 클라이언트에서 http://caffelove.com 이라는 도메인을 가진 서버에서 '내 정보'를 눌러 http://caffelove.com/myinfo라는 경로에 들어간다고 가정해보겠습니다.
+내 정보를 볼 수 있는 홈페이지라고 하겠습니다. 환경은 node.js라고 가정하자.
+/myinfo 라는 경로로 요청하면 WAS는 자신의 라우팅 정보를 통하여 어떤 처리를 해야될지 살펴봅니다. 이 떄, myinfo를 리우팅 할 때 'myinfo.html'이라는 파일을 보여줘! 라는 요청을 하게 된다면
+정적인 요소이기 때문에, 웹서버에서 클라이언트에게 myinfo.html 파일을 보내주기만 하면 된다. 관련된 CSS, Js, Image 파일도 함께
+
+하지만, myinfo는 자신의 정보를 보여주는 페이지이니 위처럼 반응하지 않는다. WAS에서는 대게 먼저 데이터베이스에서 데이터를 가져온다.
+그 다음에 원하는 데이터를 가공하여, myinfo.ejs 파일로 데이터를 보내준다. .ejs파일에서는 node.js에서의 변수나 정보를 사용할 수 있게 만들어 놓는다.
+정보를 넣어야 할 곳에 데이터베이에서 가져온 정보를 넣고, ejs파일을 html로 바꿔준 다음에 웹서버로 전송한다.
+
+웹 서버는 위의 html요소를 클라이언트에게 다시 보내주는 것이다.
+#컨테이너
+'컨테이너는 동적인 데이터들을 처리하여 정적인 페이지로 생성해주는 소프트웨어 모듈'이다. 사용자가 로그인해서 My Page 메뉴에 들어간다고 가정해보자.
+이 메뉴에서는 각자 사용자에 따라 보여질 정보가 다르다. 사용자의 요청이 들어오면 웹 서버는 정적인 요소만 클라이너트 측에 보낼 수 있고, 동적으로 처리해야 하는 
+부분은 처리할 수 없다. '컨테이너는 이러한 부분을 대신 처리해서 웹서버에 정적인 파일로 만들어서 보내주는 모듈이라고 생각하면 된다'.
+
+'즉, 웹 서버는 My Page에서 보여지는 메뉴를 나타내고, WAS는 My Page는 사용자마다 저장된 데이터가 다른 정보로 저장된 동적(각각 다른) 데이터이고,
+이런 WAS(동적) 데이터를 정적으로 바꾸어 웹 서버에 보내주는 역할을 컨테이너가 하는것.'
+
+#Goal
+1.Static Pages와 Dynamic Pages 과정을 이해한다.
+2.Web Server와 WAS 차이를 이해한다.
+3.Web 서비스 구조 (Web Service Architecture)에 대해 이해한다.
+
+#Static Pages
+-Web Server는 파일 경로 이름을 받아 경로와 일치하는 file contents를 반환한다.
+-항상 동일한 페이지를 반환한다.
+-EX)images, html, css, javascript 파일과 같이 컴퓨터에 저장되어 있는 파일들
+
+#Dynamic Pages
+-인자의 내용에 맞게 동적인 contents를 반환한다.
+-즉, 웹 서버에 의해서 실행되는 프로그램을 통해서 만들어진 결과물"Servlet : WAS" 위에서 돌아가는 Java Program
+-개발자는 Servlet에 doGet()을 구현한다.
+
+#Web server와 WAS의 차이
+#Web Server 개념
+-소프트웨어 와 하드웨어로 구분된다.
+    1)하드웨어 : Web 서버가 설치되어 있는 컴퓨터
+    2)소프트웨어 : 웹 브라우저 클라이언트로 부터 HTTP 요청을 ㅂ다아 정적인 컨텐츠 (html, jpeg, css 등)을 제공하는 컴퓨터 프로그램
+
+#Web Server 기능
+-HTTP 프로토콜을 기반으로 하여 클라이어트 (웹 브라우저 또는 웹 크롤러)의 요청을 서비스하는 기능을 담당한다.
+-요청에 따라 아래의 두 가지 기능 중 적절하게 선택하여 수행한다.
+    1)기능 1
+        -정적인 컨텐츠 제공
+        -WAAS를 거치지 않고 바로 자원을 제공한다.
+    2)기능 2
+        -동적인 컨텐츠 제공을 위한 요청 전달
+        -클라이언트의 요청 (Request)을 WAS에 보내고, WAS가 처리한 결과를 클라이언트에게 전달(Response)한다.
+        -클라이언트는 일반적으로 '웹 브라우저'를 의미한다.
+
+#WAS(Web Application Sever)
+#WAS의 개념
+-DB 조회나 다양한 로직 처리를 요구하는 동적인 컨텐츠를 제공하기 위해 만들어진 Application Server
+-HTTP를 통해 컴퓨터나 장치에 애플리케이션을 수행해주는 미들웨어(T소프트웨어 엔진)이다.
+-"웹 컨테이너(Web Container" 혹은 "서블릿 컨테이너(Servlet Container"라고도 불린다.
+    -Container란 JSP, Servlet을 실행시킬 수 있는 소프트웨어를 말한다.
+    -즉, 'WAS는 jsp, Servlet 구동 환경을 제공'한다.
+
+#WAS의 역할
+-WAS = Web Server + Web Container
+-Web Server 기능들을 구조적으로 분리하여 처리하고자하는 목적으로 제시되었다.
+    -분산 트랜잭션, 보안, 메시징, 쓰레드 처리등의 기능을 처리하는 분산 환경에서 사용된다.
+    -주로 DB서버와 같이 수행된다.
+-현재는 WAS가 가지고 있는 Web Server도 정적인 컨텐츠를 처리하는 데 있어서 성능상 큰 차이가 없다.
+
+#Thread
+-애플리케이션 코드를 하나나 순차적으로 실행하는 것은 쓰레드
+-자바 메인 메서드를 처음 실행하면 main이라느 이름의 쓰레드가 실행
+-쓰레드가 없다면 자바 애플리케이션 실행이 불가능
+-쓰레드는 한번에 하나의 코드 라인만 수행
+-동시 처리가 필요하면 쓰레드를 추가로 생성
+
+#Thread 장단점
+장점
+1.동시 요청을 처리할 수 있다.
+2.리소스(CPU, 메모리)가 허용할 때 까지 처리가능
+3.하나의 쓰레드가 지연 되어도, 나머지 쓰레드는 정상 동작한다.
+
+단점
+1.쓰레드는 생성 비용은 매우 비싸다.
+    -고객의 요청이 올 때 마다 쓰래드를 생성하면, 응답 속도가 늦어진다.
+2.쓰레드는 컨텍스트 스위칭 비용이 발생한다. (쓰레드는 동시 처리가 불가능하다. 하나 처리하고 그 다음 내용을 처리하는 시스템이다.)
+3.쓰레드 생성에 제한이 없다.
+    -고객 요청이 너무 많이 오면, CPU, 메모리 임계점을 넘어서 서버가 죽을 수 있다.
+
+#Thread Pool
+특징
+-필요한 쓰레드를 쓰레드 풀에 보관하고 관리한다.
+-쓰레드 풀에 생성 가능한 쓰레드의 최대치를 관리한다. 톰캣은 최대 200개 기본 설정(변경 가능)
+사용
+-쓰레드가 필요하면, 이미 생성되어 있는 쓰레드를 풀에서 꺼내서 사용한다.
+-사용을 종료하면 쓰레드 풀에 해당 쓰레드를 반납한다.
+-최대 쓰레드가 모두 사용중이여서 쓰레드 풀에 쓰레드가 없으면?
+    -기다리는 요청은 가정하거나 특정 숫자만큰만 대기하도록 설정할 수 있다.
+장점
+-쓰레드가 미리 생성되어 있으므로, 쓰레드를 생성하고 종료하는 비용(CPU)이 절약되고, 응답 시간이 빠르다.
+-생성 가능한 쓰레드의 최대치가 있으므로 너무 많은 요청이 들어와도 기존 요청을 안전하게 처리할 수 있다.
+
+#WAS의 멀티 쓰레드 지원
+-멀티 쓰레드에 대한 부분은 WAS가 처리
+-'개발자가 멀티 쓰레드 관련 코드를 신경쓰지 않아도 됨.' -> WAS의 사용하는 최고의 핵심
+-개발자는 마치 싱글 쓰레드 프로그래밍을 하듯이 편리하게 소스 코드를 개발
+-멀티 쓰레드 환경이므로 싱글톤 객체(서블릿, 스프링 빈)는 주의해서 사용
+
+#WAS의 주요 기능
+1)프로그램 실행 환경과 DB접속 기능 제공
+2)여러 개의 트랜잭션(논리적인 작업 단위)관리 기능
+3)업무를 처리하는 비즈니스 로직 수행
+ex)Tomcat, JBoss, Jeus, Web Sphere 등
+
+#Web Server가 필요한 이유?
+-클라이언트(웹 브라우저)에 이미지 파일(정적 컨텐츠)을 보내는 과정을 생각해보자.
+    1.이미지 파일과 같은 정적인 파일들을 웹 문서 (HTML 문서)가 클라이언트로 보내질 때 함께 가는 것이 아니다.
+    2.클라이언트는 HTML 문서를 먼저 받고 그에 맞게 필요한 이미지 파일들을 다시 서버로 요청하면 그때서야 이미지 파일을 받아온다.
+    3.Web Server를 통해 정적인 파일들을 Application Server까지 가지 않고 앞단에서 빠르게 보내줄 수 있다.
+-따라서 Web Server에서는 정적 컨테츠만 처리하도록 기능을 분배하여 서버의 부담을 줄 일 수 있다.
+
+#WAS가 필요한 이유?
+-웹 페이지는 정적 컨텐츠와 동적 컨텐츠가 모두 존재한다.
+    1.사용자의 요청에 맞게 적절한 동적 컨텐츠를 만들어서 제공해야 한다.
+    2.이때, Web Server만을 이용한다면 사용자가 원하는 요청에 대한 결과값을 모두 미리 만들어 놓고 서비스를 해야한다.
+    3.하지만 이렇게 수행하기에는 자원이 절대적으로 부족하다.
+-따라서 WAS를 통해 요청에 맞는 데이터를 DB에서 가져와서 비즈니스 로직에 맞게 그때 그때 결과를 만들어서 제공함으로써 자원을 효율적으로 사용할 수 있다.
+
+#그렇다면 WAS가 Web Server의 기능도 모두 수행하면 되지 않을까?
+1.기능을 분리하여 서버 부하 방지
+    -WAS는 DB조회나 다양한 로직을 처리하는라 바쁘기 때문에 단순한 정적 컨텐츠는 Web Server에서 빠르게 클라이언트에 제공하는 것이 좋다.
+    -WAS는 기본적으로 동적 컨텐츠를 제공하기 위해 존재하는 서버이다.
+    -만약 정적 컨텐츠 요청까지 WAS가 처리한다면 정적 데이터 처리로 인해 부하가 커지게 되고, 동적 컨텐츠의 처리가 지연됨에 다라 수행 속도가 느려진다.
+    -즉, 이로 인해 페이지 노출 시간이 늘어나게 될 것이다.
+
+#Web Service Architecture
+-Client -> Web Server -> WAS -> DB
+
+1.Web Server는 웹 브라우저 클라이언트로부터 HTTP 요청을 받는다.
+2.Web Server는 클라이언트 요청(Request)을 WAS에 보낸다.
+3.WAS는 관련된 Servlet을 메모리에 올린다.
+4.WAS는 Web.xml을 참조하여 해당 Servlet에 대한 Thread를 생성한다. (Thread Pool 이용)
+5.HttpServletRequest와 HttpServletResponse 객체를 생성하여 Servlet에 전달한다.
+    - Thread는 Servlet의 service() 메서드를 호출한다.
+    - service() 메서드는 요청에 맞게 doGet() 또는 doPost() 메서드를 호출한다.
+    - protected doGet(HttpServletRequest request, HttpServletResponse response)
+6.doGet() 또는 doPost() 메서드는 인자에 맞게 생성된 적절한 동적 페이지를 Reponse 객체에 담아 WAS에 전달한다.
+7.WAS는 Response 객체를 HttpResponse 형태로 바꾸어 Web Server에 전달한다.
+8.생성된 Thread를 종료하고, HttpServletRequest 와 HttpServletResponse 객체를 제거한다.
+
+#참고
+-DBMS(DataBase Management System)
+    1.다수의 사용자들이 DB 내의 데이터를 접근할 수 있도록 해주는 소프트웨어
+    2.DBMS는 보통 Server 형태로 서비스를 제공한다.
+    3.ex) MySQL, MariaDB, Oracle 등
+    Q)DBMS Server에 직접 접속해서 동작하는 Client Program의 문제점?
+        1.Client에 로직이 많아지고 이에 따라 Client Program의 크기가 커진다.
+        2.로직이 변경될 때마다 매번 배포가 되어야 한다.
+        3.Client에 대부분의 로직이 포함되어 배포가 되기 때문에 보안에 취약하다.
+    A) -> 이를 해결하기 위해 아래와 같은 MiddleWare가 등장했다.
+
+-MiddleWare
+    -동작과정
+        1.Client는 단순히 요청만 중앙에 있는 MiddleWare Server에게 보낸다.
+        2.MiddleWare Server에서 대부분의 로직이 수행된다.
+        3.이때, 데이터를 조작할 일이 있으면 DBMS에 부탁한다.
+        4.로직의 결과를 Client에게 전송한다.
+        5.Client는 그 결과를 화면에 보여준다.
+    -즉, '비즈니스 로직을 Client와 DBMS 사이의 MiddleWare Server에서 동작하도록 함오르써 Client는 입력과 출력만 담당하게 된댜'.
+
+
+#Common sens
+JSP = (Java Server Pages)
+'HTML 코드에 JAVA 코드를 넣어 동적웹페이지를 생성하는 웹어플리케이션 도구이다'.
+JSP가 실행되면 자바 서블릿 으로 변환되며 웹 어플리케이션 서버에서 동작되면서 필요한 기능을 수행하고 그럻게 생성된 데이터를 웹페이지와 함께 클라이트로 응답
+
+Java.Servlet = (Java Servlet)
+'서블릿은 자바코드내에서 HTML 코드가 있어서 읽고 쓰기가 굉장히 불편하기 때문에 작업의 효율이 떨아진다.'
+
+웹을 공부할때 JSP 와 Servlet을 함께 배운다.
+JSP 로 작성된 프로그램은 서버로 요청시 Servlet 파일로 변환되어 JSP 태그를 분해하고 추출하여 '다시 순수한 HTML'을 반환한다.
+
+1.클라이언트가 어떤 동작을 함으로써 hello.jsp를 요청하엿다.
+2.JSP 컨테이너가 JSP파일을 읽는다.
+3.JSP 컨테이너가 Generate (변환) 작업을 통해 Servlet (.java) 파일을 생성한다.
+4.Java 파일은 다시 .class 파일로 컴파일된다.
+5.Execute (실행)을 통해 HTML 파일을 생성하여 JSP 컨테이너 에게 전달한다.
+6.JSP는 HTTP 프로토콜을 통해 HTML 페이지를 클라이언트에게 전달한다.
+
+#Spring MVC
+Spring MVC는 웹애플리케이션을 작성하기 위한 프레임워트이다. MVC는 소프트웨어 설계 중 하나로 기능을 Model, View, Controller 3개로 분할하여 
+이를 연계하여 처리하는 것을 말한다. mvc모델은 아래와 같이 표현 할 수 있다.
+
+Spring.MVC = User -> Controller -> Model -> View -> User
+
+Spring MVC는 MVC중에서도 Front Controller 패턴으로 분리되어 있다. 이를 중앙의 프론트 컨트롤러가 처리에 대한 가교역할을 관리하는 패턴이다.
+
+Users ->(Request) Front Controller(DispatcherServlet) -> (Response) -> User
+                           |(Model)       |(Model)
+                        View template   Controller
+
+'프론트 컨트롤러'는 Spring MVC가 관리하는 컨트롤러이다. 개발에서는 그 처리내용을 의식할 필요가 없다.
+중요하게 의식해아 할 부분은 기본적으로 'Model-View-Controller' 부분이다.
+
+Model = 모델은 애플리케이션의 동적 데이티 구조이다. Spring은 평범한 Java객체와 엔티티등이 이에 해당한다.
+View  = 뷰는 그림이나 표 등의 화면정보를 표현한다. Spring은 Thymeleaf를 사용한 HTML템플릿 파일이 이에 해당한다.
+Controller = 컨트롤러는 입력을 받아 처리한다. Spring은 @Controller 어노테이션 클래스가 이에 해당한다.
+
+Template engine : 공통적인 프레임을 미리 제작한 것이다. 
+                  템플릿 양식과 특정 데이터 모델에 따른 입렵 자료를 합성하여 결과 문서를 출력하는 소프트웨어(또는 소프트웨어 컴포넌트)를 말한다.
+Web Template engine  : '웹 문서가 출력되는 템플릿 엔진을 말한다'. 즉, 웹 템플릿 엔진은 웹 템플릿들과 웹 컨텐츠 정보를 처리하기 위해 설계된 소프트웨어이다.
+                        또한 웹 템플릿 엔진은 'View Code(HTML)와 Data Logic Code(DB Connectiona)를 분리해주는 기능을 한다'.
+Server Side Template Engine : 서버에서 DBD 혹은 API에서 가져온 데이털을 미리 정의된 Template에 넣어 HTML을 그려서 클라이언트에 전달해주는 역할을 한다.
+                              즉, 'HTML 코드에서 고정적으로 사용되는 부분은 템플릿으로 만들어주고 동적으로 생성되는 부분만 템플릿 특정 장소에 끼워넣는 방식'으로 동작할 수 있도록 함.
+순서
+1) 서버가 클라이언트의 요청을 받는다.
+2)필요한 데이터(DB)에서 가져오거나 API에서 가져오는 데이터를 가져온다.
+3)미리 정의된 Template에 해당 데이터를 적절하게 넣는다.
+4)서버에서 HTML(데이터가 반영된 Template)을 그린다.
+5)해당 HTML을 클라이언트에 전달한다.
+
+Client Side Template Engine : HTML형태로 코드를 작성할 수 있으며, 동적으로 DOM을 그리게 해주는 역할을 한다.
+                              즉, 데이터를 받아서 DOM 객체에 동적으로 그려주는 프로세스를 담당한다.
+                              ex)웹 페이지에서 여러 카테고리 중 탭을 선택할 때마다 형식의 프레임에 내용만 바뀌어 변경되는 것을 볼 수 있다.
+                              클라이언트에서는 이런 Template을 매번 입력하거나 바꿀 수 없으므로 Script 타입을 Template으로 미리 만들어 사용한다.
+                              (안의 내용을 replace를 사용하여 바꾼다.)
+순서
+1)클라이언트에서 공통적인 프레임을 미리 Template으로 만들어 준다.
+2)서버에서 필요한 데이터를 받는다.
+3)데이터를 Template에 적절한 위치에 replace하고 DOM 객체에 동적으로 그려준다.
+
+단일 화면에서의 화면 변경에서는 서버 단을(서버 사이드 템플릿 엔진 등)사용하지 않고 클라이언트 사이드 템플릿 엔진을 사용하고 계속해서 페이지를 이동하여 
+한다면 서버 단을(서버 사이트 템플릿 엔진등)을 사용한다.
+
+Spring MVC를 사용하는 경우, Servlet을 의식하는 것이 아니지만, 'Spring MVC도 내부에서는 서블릿을 사용하여 요청에 대한 처리를 하게 된다'.
+
+#STS (Spring Tool Suit)
+종속성 관련 지정 모듈 정보
+Spring Boot DevTools : Spring Boot 개발도구이다. 'java코드 및 HTML 파일등의 수정을 감지하여 실행중인 애플리케이션에 즉시 반영해주'는 개발관련 유용한 도구가 포함되어 있다.
+Thymeleaf : Spring Boot에서 '표준으로 사용되는 HTML템플릿 엔진'이다.(참고로 Spring Boot에서는 JSP사용이 비추천되고 있다.)
+Spring Web : Spring MVC를 이용한 웹애플리케이션이 작성 가능하다.
+Lombok : 정형코드 작성의 간소화에 도움을 주는 Java 어노테이션 라이브러리이다.
+
+#생성된 프로젝트의 파일 관련
+SpringMvcApplication.Java : main메소드가 선언된 클래스이다. Spring Boot의 시작은 이 클래스에서 시작된다.
+                            @SpringMvcApplication 어노테이션이 정의되어 있다.
+application.properties : Spring Boot 속정 파일이다.
+pom.xml : Maven 설정파일입니다. Maver은 Java프로그램을 빌드하기 위한 도구이다. 다양한 기능이 있지만, 유용한 기능은 애플리케이션이 사용하는 라이브러리의 자동 검색을 한다.
+
+#Lombok
+Spring Starter Project로 프로젝트를 만들 때 중속성에서 Lombok을 지정하는 것만으로는 생성한 애플리케이션 빌드나 실행시 Lombok이 제대로 동작하지 않기 때문에, Lombok사이트
+사이트에서 Lombok.jar파일을 다운로드 받아 아래와 같이 설치해라.
+알집과 같은 압축해제 프로그램이 설치된 윈도우 환경에서는 jar파일이 제대로 실행되지 못하기 때문에 아래와 같이 명령프롬트를 열고 Lombok.jar파일이 다운로드된 경로로
+이동하여 아래명령어를 실행하면 아래 인스톨러 화면이 나온다. (JDK가 설치되어 있어야 가능함.)
+
+CMD = C:\>java -jar lombok.jar
+
+#REST API 
+RESTful API 는'웹시스템을 이부에서 사용하기 위한 프로그램 호출규격의 종류 중 하나로', REST라는 설계원칙에 따라 책정된 것을 말한다.
+REST 자체는 적용 범위가 넓은 추상적인 모델이지만, 일반적으로 REST의 개념을 웹API에 적용한 것을 RESTful API라고 부른다.
+
+RESTful API는 URL/URI로 모든 자원을 고유하게 식별하고 세션 관리 및 상태 관리등을 실시하지 않는 startless를 근거로 하며, 같은 URL에 대한 호출을 항상 같은 결과가 리턴될 것으로 예상
+
+또한, 자원 조직은 HTTP메소드에 의해 지정된 결과는 XML 또는 HTML, JSON등으로 리턴된다. 또한, 처리결과는 HTTP 상태코드에 통지하는게 원칙으로 포함된다.
+
+#REST 설계원칙
+1.세션등의 상태관리를 실시하지 않는다.(교환되는 정보는 그 자체로 완결하다고 해석함.)
+2.정보를 조작하는 명령체계가 미리 정의 및 공유되고 있다. (HTTP의 GET, POST메소드등)
+3.모든 정보는 일반적인 구문으로 고유하게 식별된다.(URL, URI)
+4.정보 내부에 다른 정보와 상태에 대한 링크를 포함할 수 있다.
+
+#REST API 장단점
+장점 
+-'일부 애플리케이션의 리소스를 URI로 나타낼' 수 있따.
+    -'주소창에 입력하면 해당 리소스를 참조할 수' 있다.
+-URI에 규칙이 나오는 것으로 이용하는 개발자가 편해진다.
+-확장성이 향상된다.
+-통합의 상대적 용이성
+    -표준 데이터포멧(XML, JSON)을 처리하여 다른 시스템과 연계가 용이하다.
+    -REST기반 웹애플리케이션은 인터페이스가 고정되어 있기 때문에 호환성 문제가 발생하기기 어렵다.
+
+단점
+-설정 REST설계를 하기 쉬운 API프레임워크를 선정할 필요가 있다. API프레임워크 선정이 REST설계에 맞지 않으면 URI의 설정 및 변경이 어렵고, 코드가 지저분해진다.
+
+REST는 하나의 리소스에 대한 주소 지정이 가능한 URI가 준비되어 있는 것을 추천한다. URI 설계는 자원에 대한 디렉토리 구조를 모방할 때 간단하고 직관적으로 서비스를 지정이 가능하다.
+
+#인터페이스 통일
+REST에서 사용되는 HTTP메소드를 CRUD작업과 매핑된다.
+
+처리기준    HTTP메소드  CRUD작업
+등록        POST        CREAT
+검색        GET         READ
+업데이트     PUT         UPDATE
+삭제        DELETE      DELETE
+
+RREST는 URI로 표현된 리소스에 대해 각각 HTTP메소드를 실행합니다.
+- 등록 POST: ~/users/userId/events
+- 검색 GET: ~/users/userId/events/eventId
+- 업데이트 PUT: ~/users/userId/events/eventide
+- 삭제 DELETE: ~/users/userId/events/eventide
+
+등록처리는 Insert처리이기 때문에 ID를 설정할 필요가 없습니다. 그 외 검색, 업데이트 삭제는 레
+코드지정을 위해 CRUD작업을 실행하기 위해 ID를 URI에 부여해야 합니다.
+
+#HTTP 상태코드
+REST API는 리소스에 대한 액세스 결과를 HTTP상태코드로 리턴해야 합니다. 클라이언트 HTTP상태
+코드를 기반으로 처리합니다.
+상태코드        메시지                설명
+200            OK                    성공
+201            Created               생성 성공(POST)
+204            No Content            성공했지만 리턴자원없음
+400            Bad Request           일반 오류
+401            Unauthorized          인증 오류
+403            Forbidden             권한 오류
+404            Not Found             해당 자원없음
+405            Method Not Allowed    메소드 미대응
+409            Conflict              자원등의 충돌
+500            Internal Server Error 서버 오류
+
+#Spring Bean
+1.'Spring IoC 컨테이너가 관리하는 자바 객체를 Bean'
+우리가 알던 기존의 Java Programming에서는 Class를 생성하고 new를 입력하여 원한느 객체를 직접 생성한 후에 사용했다.
+하지만 Spring에서는 직접 new를 이용하여 생성한 객체가 아니라, Spring에 의하여 관리당하는 자바 객체를 사용한다. 이렇게
+'Spring에 의하여 생성되고 관리되는 자바 객체를 Bean이라고 한다'. Spring Framework에서는 Spring Bean을 얻기 위하여 
+ApplicationContext.getBean()와 같은 메소드를 사용하여 Spring에서 직접 자바 객체를 얻어서 사용한다.
+
+2.Spring IoC 컨테이너가 관리하는 자바 객체를 'Bean' 이라고 부른다.
+우리가 new 연산자로 어떤 객체를 생성했을 때 그 객체는 빈이 아니다.
+ApplicationContex.getBean()으로 얻어질 수 있는 객체는 빈이다.
+즉, Spring에서의 빈은 ApplicationContext가 알고있는 객체, 즉 ApplicationContex가 만들어서 그 안에 담고있는 객체를 의미한다.
+
+#Spring Bean을 Spring IoC Container에 등록하는 방법
+Java에서 annotaion 이라는 기능이 있다. 사전상으로는 주석의 의미이지만 Java에서는 주석 이상의 기능을 가지고 있다.
+annotaion은 자바 소스코드에 추가하여 사용할 수 있는 메타데이터의 일종이다. 소스코드에 추가하면 단순 주석의 기능을 하는 것이 아니라 특별한 기능 사용 가능핟.
+java에서는 @Override, @Depercated와 같은 기본적인 annotaion을 제공한다. 아래의 상속 예제에서는 @Override를 이용하여 상속임을 명시해준다.
+ex)
+public class Parent {
+    public void doSomething() {
+        System.out.println("This is Parent");
+    }
+}
+
+public class Son extends Parent{
+    @Override
+    public void doSomething() {
+        System.out.println("This is Son");
+    }
+}
+Spring에서는 여러 가지 Annotaion을 사용하였지만, Bean을 등록하기 위해서는 @Component Annotaion을 사용한다.
+'@Component Annotaion이 등록되어 있는 경우에는 Spring이 Annotaion을 확인하고 자체적으로 Bean으로 등록된다'.
+실재 예시
+#HelloController.java
+@Controller
+public class HelloController {
+    #Http Get method의 /hello 경로로 요청이 들어올 때 처리할 Method를 아래와 같이 @GetMapping Annotaion을 사용하여 Mapping을 사용할 수 있다.
+    @GetMapping("hello")
+    public String hello(Model model) {
+        model.addAttribute("data", "This is data!!");
+    }
+}
+@Contorller Annotaion을 intelliJdptj Ctrl을 눌러서 이동해보면 아래와 같은 소스를 확인 할 수 있다. 
+@Controller Annotaion에는 @Component Annotaion이 있는 것을 확인할 수 있따.
+@Component Annotaion 으로 인하여 Spring은 해당 Controller를 Bean으로 등록한다.
+
+#Controller.java
+
+# -- 일부 생략 --
+@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Component
+public @interface Controller {
+
+	#/**
+	# * The value may indicate a suggestion for a logical component name,
+	# * to be turned into a Spring bean in case of an autodetected component.
+	# * @return the suggested component name, if any (or empty String otherwise)
+	# */
+	@AliasFor(annotation = Component.class)
+	String value() default "";
+
+}
+
+#Bean Configuration File에 직접 Bean 등록하는 방법
+@Configuration과 @Bean Annotaion을 이용하여 Bean을 등록할 수 있다. 아래의 예쩨와 같이 @Configuration을 이용하면 
+Spring Project에서의 Configuration 역할을 하는 Class를 지정할 수 있따. 해당 File 하위에 Bean으로 등록하고자 하는 Class에 @Bean Annotaion을 사용하면 Bean등록 가능
+
+#Hello.java
+@Configuration
+public class HelloConfiguration {
+    @Bean
+    public HelloController sampleController() {
+        return new Sample.Controller;
+    }
+}
+
+#Repository, @Controller
+쉽게 간략히 설명하자면 'Reopository 패키지'는 DB에 접근하는 모든 코드가 모여있다고 생각하면 된다.
+'Service 패키지'는 DB에 접근 하는 코드는 repository에 위임히고, 비즈니스 로직과 관련된 모든 코드가 모여있다고 생각하자.(Service는 DB데이터를 CRUD할 수 있는 느낌)
+이렇게 구분해두면 비즈니스 로직과 관련된 부분에 문제는 service 페키지를 확인, db접근과 관련된 문제는 repository
+
+두 어노테이션을 알기 위해선 먼저 스프링 컨테이너 구조와 빈(bean)에 대해서 알고 있어야 한다.
+컨테이너 구조는 모든 어플리케이션에서 사용하는 "루트 컨테이너", 각 서블릿이 사용하는 "서블릿용 컨테이너", 개발가 임의로 사용하는 "개발자용 컨테이너".
+이렇게 세 가지 종류가 있다. 컨테이너 이름을 정식 명칭이 아니라 그냥 구분해 놓은 것 이다.
+
+@Contorller 어노테이션을 붙이면 핸들러가 스캔할 수 있는 빈(Bean) 객체가 되어 '서블릿용 컨테이너'가 생성된다.
+마찬가지로 @Repository, @Service 어노테이션은 해당 클래스를 '루트 컨테이너'에  빈(Bean) 객체로 생성해주는 어노테이션이다.
+둘다 Bean 객체를 생성해주고 딱히 다른 기능을 넣어주는게 아니라서 뭘 써도 상관 없긴하다 명시적으로 구분해주기 위해 각자 분리해서 사용합니다. 부모 어노테이션인 @Component를 붙여줘도 똑같이 
+루트 컨테이너에 생성되지만 가시성이 떨어지기 때문에 잘 사용 안한다.
+
+참고로 객체 내에서 데이터 변경 작업이 있는 VO(DTO) 객체와 같은 경우는 동기화 문제로 인해 Bean 객체로 사용하지 않는다.
+'Bean 객체는 항상 데이터 변경이 없는 객체에 한해 사용하는 점에 유의하자'
+
+#Spring MVC 구조
+-Spring Framework에서 제공하는 Web Module (Model - View - Controller)
+-Model : '데이터' 디자인 담당      
+-View : 랜더링 되어 보이는 페이지
+-Controller : 요청을 주고 받는 로직 담당
+
+#.config
+    -각종 설정 클래스 파일
+    -@Configuration 
+    -WebMVC 설정 관련 제외한 나머지는 모듈화 한 뒤 Application에서 import
+#.Controller
+    -각종 컨트롤러 클래스 파일
+    -@Controller 
+    -각 컨트롤러 코드는 URI 매핑
+    -Service 인스턴스를 가져와 로직을 실행
+    -View에 나가기 전, 후 작업을 담당
+#.Service
+    -서비스 로직을 담은 클래스 파일
+    -@Service
+    -필요한 경우 DAO를 직접 사용
+    -인터페이스로 핵심 로직을 먼저 정의한 후 클래스로 구현
+#.Webapp/WEB-INF/views/
+    -랜더링 되는 view 관련 파일 ex) jsp...
+
+    #DAO 
+    -DB의 Data에 접근하기 위한 객체
+
+    #jsp
+    -HTML 코드에 Java 코드를 넣어 동적 웹페이지를 생성하는 web Application
+
+#.DisplathcerServlet
+    -Servlet Container에서 HTTP 프로토콜을 통해
+     들어오는 모든 요청을 프레젠테이션 계층의 제일 앞에 두어서 중앙 집중식으로 처리해주는 '프론트 컨트롤러'
+     (클라이언트 - 요청 - 서블릿 컨테이너(Tomcat) -> 이때 제일 앞에서 서버로 들어오는 모든 요청을 처리하는 '프론트 컨트롤러'
+     DispatcherServlet이 처리하는 URL 패턴은 일반적으로 /*.do와 같이 /로 시작해 .do로 끝나는 URL 패턴에 대해서 처리하고 지정.
+
+#Annotaion @어노테이션 : 사용할 수 있는 곳
+-@Controller (클래스) : 컨트롤러 객체임을 명시
+-@RequestMapping (클래스, 메소드) : 특정 URL에 매칭 되는 클래스나 메소드임을 표시
+-@RequestParam (파라미터) : 요청에서 특정한 파라미터 값을 찾아낼 때 사용
+-@RequestHeadeer (파라미터) : 요청에서 특정 HTTP 헤더 정보를 추출할 때 사용
+-@PathVariable (파라미터) : 현재 URL에서 원하는 정보를 추출할 때 사용
+-@CookieValue (파라미터) : 현재 사용자의 쿠기가 존재하는 경우 쿠키의 이름을 이용해 쿠키값을 추출
+-@ModelAttribute (메소드 파라미터) : 자동으로 해당 객체를 뷰까지 전달하도록 만든 것
+-@ResponseBody (메소드 리턴타입) : 리턴 타입이 HTTP의 응답 메시지로 전송
+-@RequestBody (파라미터) : 요청 문자열이 그대로 파라미터로 전달
+-@Repository (클래스) : DAO 객체
+-@Service (클래스) : 서비스 객체
+
+MVC = 웹 어플리케이션 개발에서 각 기능에 따라 분리하여 개발하는 웹 어플리케이션 모델을 MVC 모델이라고 한다.
+        MVC 모델의 종류에는 모델1, 모델2가 있다.
+
+        MVC Model1
+        :비즈니스 로직(데이터를 생성, 표시, 저장, 변경하는 부분)과 화면 기능을 모두 동일한 JSP에서 수행하도록 개발하는 방식
+            (클라이언트 - JSP(화면 기능 로직처리) - DAO 클래스 - DB)
+         이는 구조가 단순하여 구현이 쉽다는 장점이 있다. 하지만 웹 어플리케이션의 복잡도가 증가할 수록 아래와 같은 문제가 발생
+            1.유지보수 문제 : View 기능과 Controller 기능이 섞여 오류 발생
+            2.재사용성 문제 : 기능이 한 덩어리로 묶여있어 다른 어플리케이션에 사용 어려움
+            3.분업화 문제 : View를 구현한는 프론트엔드와 Controller를 구현하는 Back 엔드의 분엽 효율성 떨어짐
+            
+            -> 이러한 문제로 모델1은 실제 개발 환경에서는 널리 쓰이지 않는다.
+        
+        MVC Model2
+        :Model1의 단점을 보완하고자 웹 어플리케이션의 각 기능들을 분리하여 구현한다.
+         View 기능은 HTML 기반 jsp(화면기능)에서, Controller 기능은 Java 기반 Servlet(요청 처리)에서 구현하고 Model기능은 DAO 클래스를 통해 DB연동을 구현
+
+        #Client - Servlet(Controller) - DAO(Model) - DB - VO - Servlet - Client
+        1.브라우저에서 특정 URL을 호출한다.
+        2.BoardController 서블릿이 요청을 받아 BoardDAO의 listPage()를 호출한다.
+        3.BoardDAO의 listPage()에서 SQL문으로 회원 정보를 조회한다.
+        4.조회된 정보를 VO(value Object) 혹은 HashMap 설정을 통해 반환한다.
+        5.BoardController가 받은 정보를 listPage.jsp로 전송한다.
+        6.listPage.jsp가 결과를 클라이언트의 화면에 출력한다.
+
+        이후 다중 DB 접근 시 DAO의 재사용성을 위항 Model 기능에 Service를 추가하기도 한다.
+
+
+
+

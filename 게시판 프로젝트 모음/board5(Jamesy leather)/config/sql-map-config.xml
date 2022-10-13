@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="config/database.properties"/>
+    <typeAliases>
+      <typeAlias type="com.portfolio.biz.user.dto.UserVO" alias="user"/>
+      <typeAlias type="com.portfolio.biz.employee.dto.AdminVO" alias="admin"/>
+    </typeAliases>
+	
+    <mappers>
+      <mapper resource="mappings/user-mapping.xml"/>
+      <mapper resource="mappings/admin-mapping.xml"/>
+    </mappers>
+</configuration>
+
+  <!--
+    sql-map-config.xml 파일은 mapping파일에서 조회한 데이터를 저장하기 위해 resultType을 설정해주는 곳이다.
+    User데이터를 받아오기 위해 저장한 애들 UserVO라는 공간을 user라는 이름으로  resultType 설정한다.
+
+    mybatis 설정 파일이다. 플러그인 셋팅, 카멜표기맴핑등의 옵션, sql 쿼리문이 있는 맵퍼 위치등을 설정 할 수 있다.
+
+    xml mapper를 이용하는데 있어서 매번 parameterType이나 resultType을 패키지까지 포함된 클래스명을 작성하는 일이 번거롭다면
+    Mybatis의 설정 파일인 mybtais-config.xml을 사용하여 <typeAliases>를 작성해 줄 수 있다.
+
+    <typeAliases>는 하위 요소로 <package>와 <typeAlias> 요소를 가질 수 있다. 이 요소들을 이용하면 매번
+    parameterType이나 resultType에 사용하는 클래스의 이름을 'org.zerock.domain'은 생략한 채로 표현이 가능
+      -->

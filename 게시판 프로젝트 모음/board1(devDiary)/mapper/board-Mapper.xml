@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.board-Mapper">
+
+    <select id="getBoardList" resultType="board">
+
+        SELECT * FROM board ORDER BY id DESC;
+
+    </select>
+
+    <insert id="boardwrite">
+
+        insert into board (id,subject,context,attachments,likes,views,create_time,update_time) 
+        values(#{id},#{subject},#{context},#{attachments},#{likes},#{views},now(),null);
+
+    </insert>
+
+    <select id="getBoardDetail" resultType="board">
+        
+        SELECT * FROM board where id = #{id};
+        
+    </select>
+        
+    <!-- update -->
+    <update id="viewUpdate">
+    
+        UPDATE board SET views = views+1 WHERE id = #{id}
+    
+    </update>
+    
+</mapper>

@@ -1,0 +1,84 @@
+<properties>
+    <java-version>1.8</java-version>
+    <org.springframework-version>4.3.2.RELEASE</org.springframework-version>
+    <org.aspectj-version>1.6.10</org.aspectj-version>
+    <org.slf4j-version>1.6.6</org.slf4j-version>
+    </properties>
+    
+    
+    <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.0.1</version>
+    <scope>provided</scope>
+    </dependency>
+    <dependency>
+    <groupId>javax.servlet.jsp</groupId>
+    <artifactId>jsp-api</artifactId>
+    <version>2.2</version>
+    <scope>provided</scope>
+    </dependency>
+    
+    
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.2.2</version>
+        </dependency>
+        
+        <dependency><groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>1.2.0</version>
+        </dependency>
+        
+        <dependency> <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+        <version>${org.springframework-version}</version>
+        </dependency>
+        
+        <dependency>
+        <groupId>commons-dbcp</groupId>
+        <artifactId>commons-dbcp</artifactId>
+        <version>1.4</version>
+        </dependency>
+
+        <!-- jstl dependecy -->
+        <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <version>1.1.2</version>
+        </dependency>
+
+        <!--
+        public int boardwrite(Board board) {
+        int result = 0; 
+		result = boardService.boardwrite(board); 
+		return result;
+        }
+            여기서 보면 boardwrite 메서드의 리턴 타입이 int라고 돼있는데
+
+            어라? 저는 int로 리턴하면 String or Object로 리턴하라고 에러가 나던데요? 네 맞습니다.
+            원래 스프링은 Model 객체를 리턴해 "view"를 보여주려고 하는 성질이 존재하는데,
+
+            갑자기 int를 리턴해버리면 처음부터 형태가 맞지 않다며 예외를 뱉습니다.
+            그럼 아예 값을 리턴해주는 JSON 형태로 던져주면 어떨까요? 네 바로 그 작업을 하는 것입니다.
+        -->
+        <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.9.4</version>
+        </dependency>
+
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.5.1</version>
+        <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+    
+            <compilerArgument>-Xlint:all</compilerArgument>
+            <showWarnings>true</showWarnings>
+            <showDeprecation>true</showDeprecation>
+        </configuration>
+    </plugin>

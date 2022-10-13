@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+    <select id="selectBoardList" resultType="hashmap" parameterTyp="hashmap">
+        <![CDATA[
+        SELECT
+            IDX,
+            TITLE,
+            HIT_CNT,
+            CREA_DATE,
+            CREA_ID
+        FROM
+            TB_BOARD
+        WHERE
+            DEL_CHK = 'N'
+        ORDER BY IDX DESC   
+        ]]>
+    </select>
+</mapper>
+
+<!-- 호출할 쿼리가 저장되는 곳이다. 프로젝트에는 기본적으로 여러개의 <mapper>를
+     가지기 때문에 중복된 이름의 SQL이 존재 할 수 있다. 그래서 각 <mapper> 마다
+     namespace 속성을 이용해서 <mapper>간의 유일성을 보장해야 한다. 
+     -03행 : board라는 이름의 namespace로 유일성을 보장한다.
+     -05행 : <select> 태그를 이용해서 쿼리문이 select문이라는 것을 명시한다.
+                id를 selectBoardList라고 정의하였는데, BoardDAO에서 쿼리이름을 나타낸다.
+     -resultType="hashmap" : 쿼리가 실행될 때 필요한 변수가 HashMap 형태라는 것을 의미한다.
+     -6~18행 : 글번호, 제목, 조회수, 작성일자, 작성자를 가져오기 위한 쿼리문이다.
+     </select>-->
+
+<mapper namespace="board">
+
+    <select id="insertBoard" parameterTyp="hashmap">
+        <![CDATA[
+            INSERT INTO TB_BOARD
+                (
+                TITLE,
+                CONTENTS,
+                HIT_CNT,
+                DEL_CHK,
+                CREA_DATE,
+                CREA_ID
+            )
+            VALUES
+            (
+                #{ title},
+                #{ contents},
+                0,
+                'N',
+                SYSDATE(),
+                #{ crea_id}
+            )
+        ]]>
+    </select>
+</mapper>
+
+<!-- 
+     1~2행 : namespace와 id에 주의하자!!! dao에서 사용한 board.insertBoard 쿼리 id에 유의하자.
+     32~54행 : sql문을 작성한다. #{}안에 있는 것은 form 태그안의 name의 이름과 같아야한다(대소문자 구분)
+-->
+
+<select id="detailBoard" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            IDX,
+            TITLE,
+            CONTENTS,
+            HIT_CNT,
+            CREA_ID,
+            IF(
+                DATE_FORMAT(CREA_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+                DATE_FORMAT(CREA_DATE, '%Y.%m.%d'),
+                DATE_FORMAT(CREA_DATE, '%H:%i')
+            ) as CREA_DATE
+        FROM
+            TB_BOARD
+        WHERE
+            IDX = #{ idx}
+        ]]>
+    </select>
+
+    <update id="updateHitBoard">
+        <![CDATA[
+            UPDATE
+                TB_BOARD
+            SET
+                HIT_CNT = HIT_CNT + 1
+            WHERE
+                IDX = #{ idx}
+        ]]>
+    </update>
+
+<!--
+     if() : 이 부분은 그냥 CREA_DATE만 써서 작성 시간을 가져와도 된다. 나는 글 작성 시간이 오늘이면 시간으로,
+                이전 시간의 글들은 날짜로 표기하고 싶었다. 그래서 조금은 북잡한 쿼리문을 넣었다. 
+                무슨 말인지 모르겠으면 실행한 부분을 보면 이해가 될 것이다. 
+                굳이 이렇게 안해도 된다면, DB에 저장된 CREA_DATE를 가져오면 된다.
+     SET : 조회수를 1씩 올리는 부분이다.
+
+-->
+
+<select id="detailBoard" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            IDX,
+            TITLE,
+            CONTENTS,
+            HIT_CNT,
+            CREA_ID,
+            IF(
+                DATE_FORMAT(CREA_DATE, '%Y%m%d') < DATE_FORMAT(now(),'%Y%m%d'),
+                DATE_FORMAT(CREA_DATE, '%Y.%m.%d'),
+                DATE_FORMAT(CREA_DATE, '%H:%i')
+            ) as CREA_DATE
+        FROM
+            TB_BOARD
+        WHERE
+            IDX = #{ idx}
+        ]]>
+    </select>
+
+    <!-- 수정한 글을 업데이트 시키는 부분 -->
+    <update id="updateBoard" parameterTyp="hashmap">
+        <![CDATA[
+            UPDATE
+                TB_BOARD
+            SET
+                HIT_CNT = HIT_CNT + 1
+            WHERE
+                IDX = #{ idx}
+                and
+                CREA_ID = #{ crea_id}
+        ]]>
+    </update>
+
+    <!-- 글 삭제 쿼리
+         삭제 컬럼을 'N'에서 'Y'로 업데이트를 해준다.
+         삭제 컬럼의 기본이 'N'이다. 목록에서는 삭제컬럼이 'N'인 글만 보이게 했다.
+         따라서 삭제버튼을 눌러서 삭제컬럼을 'Y'로 업데이트 시킨 글들은 보이지 않게 된다.
+         하지만 데이터베이스에는 글의 정보들이 남아있다.
+    -->
+    <update id="deleteBoard">
+        <![CDATA[
+            UPDATE
+                TB_BOARD
+            SET
+                DEL_CHK = 'Y'
+            WHERE
+                IDX = #{ idx}
+        ]]>
+    </update>
+
+    <!-- 게시판 페이징
+         Criteria 객체에 담아서 SQL 매핑에 보낼 파라미터는 특정 페이지 게시글의 행(pageStart)과
+         페이지당 보여줄 게시글의 개수 (perPageNum)이다.
+    -->
+    <select id="selectBoardList" resultType="hashmap" parameterTyp="hashmap">
+        <![CDATA[
+            SELECT
+                *
+            FROM
+                board
+            WHERE
+                DEL_CHK = 'N'
+            ORDER BY IDX DESC
+            LIMIT #{pageStart}, #{perPageNum} 페이징 조회를 위해 LIMIT를 이용해서 원래의 목록 조회 쿼리를 수정
+        ]]>]
+    </select>
+
+    <!-- 총 게시글 갯수-->
+    <select id="countBoardLists" resultType="Integer">
+        <![CDATA[
+            SELECT
+                count(*)
+            FROM
+                board
+            WHERE
+                DEL_CHK='N'
+        ]]>]
+    </select>
+

@@ -1,0 +1,108 @@
+<!-- 장바구니 등록 -->
+<insert id="cartInsert">
+    INSERT INTO CART (CART_NO  , CART_ITEM_NO
+    , CART_CKLIMIT , CART_OPTION_CONTENT , CART_OPTION_NO, 
+    <if test="cart_mem_no == 0">
+    CART_CKID 
+    </if>
+    <if test="cart_mem_no != 0">
+    CART_MEM_NO
+    </if>
+    )VALUES(
+    (SELECT
+    NVL(MAX(CART_NO), 0) + 1 FROM CART) ,
+     #{cart_item_no} ,SYSDATE , #{cart_option_content} , #{cart_option_no} ,
+    <if test="cart_mem_no == 0">
+     #{cart_ckid}
+    </if>
+    <if test="cart_mem_no != 0">
+    ${cart_mem_no}
+    </if>
+    
+    )
+
+</insert>
+
+<!-- 로그인시 비회원장바구니 -> 회원장바구니 -->
+<update id="cartUpdate">
+UPDATE CART SET cart_mem_no = #{mem_no} WHERE CART_CKID = #{cart_ckid}
+</update>
+
+<!-- 
+    장바구니 테이블은 ckID라는 쿠키의 정보가 기록될 컬럼과 mem_no라는 회원의 PR이 기록될 컬럼이 있는데,
+    세션이 null ( 비회원 ) 이라면 ck_id를 insert하고,
+    세션이 != null ( 회원 ) 이라면 mem_no를 insert하도록 동적쿼리를 작성했다. 
+    또한, 로그인시 비로그인상태에서 담았던 장바구니의 물품을 쿠키의 value값으로 where문을 줘서
+    장바구니 테이블의 해당 값에 mem_no를 update시킨다.
+    한마디로 비회원 상태일때는 mem_no 부분이 null 이고, 로그인을 할때 mem_no가 채워지도록 설계해서
+    장바구니에 담긴 상품을 따로 delete나 insert하지않고 update문으로 한번에 할 수 있도록 구현했다.
+-->
+
+<!-- 장바구니 뷰 -->
+<select id="cartList" resultMap="CartVO">
+    select a.cart_no, a.cart_option_no, a.cart_option_content, b.item_no,
+    b.item_name , b.item_price ,b.item_imgmain, c.option_vol , c.option_content
+    from CART a left outer join ITEM b on a.cart_item_no = b.item_no 
+    left outer join ITEMOPTION c on a.cart_option_no = c.option_no
+    where
+    <if test="cart_mem_no == 0">
+        cart_ckid = #{cart_ckid}
+    </if>
+    <if test="cart_mem_no != 0">
+        cart_mem_no = #{cart_mem_no}
+    </if>
+</select>
+
+<resultMap type="kr.co.vo.CartVO" id="CartVO">
+<result column="CART_NO" property="cart_no" />
+<result column="CART_MEM_NO" property="cart_mem_no" />
+<result column="CART_ITEM_NO" property="cart_item_no" />
+<result column="CART_OPTION_NO" property="cart_option_no" />
+<result column="CART_OPTION_CONTENT" property="cart_option_content" />
+<collection property="itemVO" resultMap="ItemVO"></collection>
+<collection property="optionVO" resultMap="OptionVO"></collection>
+
+</resultMap>
+
+<resultMap type="kr.co.vo.ItemVO" id="ItemVO">
+<result column="ITEM_NO" property="item_no" />
+<result column="ITEM_NAME" property="item_name" />
+<result column="ITEM_PRICE" property="item_price" />
+<result column="ITEM_SIZE" property="item_size" />
+<result column="ITEM_COLOR" property="item_color" />
+<result column="ITEM_CONTENT" property="item_content" />
+<result column="ITEM_IMGSUB" property="item_imgsub" />
+<result column="ITEM_STAR" property="item_star" />
+<result column="ITEM_CATEMAIN" property="item_catemain" />
+<result column="ITEM_CATESUB" property="item_catesub" />
+<result column="ITEM_MODEL" property="item_model" />
+<result column="ITEM_IMGMAIN" property="item_imgmain" />	
+</resultMap>
+
+<resultMap type="kr.co.vo.OptionVO" id="OptionVO">
+<result column="OPTION_NO" property="option_no" />
+<result column="OPTION_CONTENT" property="option_content" />
+<result column="OPTION_ITEM_NO" property="option_item_no" />
+<result column="OPTION_VOL" property="option_vol" />
+</resultMap>
+
+<!-- 
+    목록 부분이기 때문에 outer join을 이용해서 리스트를 만들었다.
+    resultMap의 사용의 설명은 생략하도록 한다.
+    장바구니VO (CartVO)
+    상품VO (ItemVO)
+    옵션VO (OptionVO)
+    를 사용했고,
+    조인의 결과 값을 받기 위해
+    장바구니VO에 상품과 옵션VO를 import해서 getter & setter를 생성
+    비회원일때는 ck_id라는 쿠키의 valueㄹ,
+    회원일때는 mem_no, 회원의 PR로 조회한다.
+    장바구니에 담겨있는 상품의 PR과 옵션의 PR로 뷰를 구성했다. 
+-->
+
+<!-- 쿠폰목록 -->
+<select id="orderCoupon" resultType="kr.co.vo.CouponVO">
+    <![CDATA[
+    SELECT * FROM COUPON WHERE TO_CHAR(CPN_EDATE ,'YYMMDD') > TO_CHAR(SYSDATE,'YYMMDD') AND CPN_MEM_NO = #{mem_no}
+    ]]>
+    </select>

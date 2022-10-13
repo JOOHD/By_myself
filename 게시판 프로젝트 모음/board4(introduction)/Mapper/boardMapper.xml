@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<configuration>
+    <setting>
+        <!-- null 값이 파라미터로 전달될 때 오류나지 않게 NULL 처리 
+            (이것은 매핑되는 파라미터에 Null 값이 있는 경우 발생하는 에러에 대비하기 위한 코드이다. )
+        -->
+        <!-- 이거 하면 #{parameter, jdbcType=VARCHAR} 이렇게 안해도 된다. -->
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+    <typeAliases>
+        <package name="com.board.example" />
+    </typeAliases>
+</configuration>
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="board">
+
+    <!-- 게시물 목록 데이터 불러오기 -->
+    <select id-"boardList" resultType="com.board.exapmle.dto.boardDTO">
+            select bno, title, writer, regdate, viewcnt
+            from board order by bno desc  
+    </select>
+
+    <!-- Create 부분에 해당하는 글 쓰기 쿼리 -->
+    <insert id="boardWriter">
+            insert into board (bno, title, content, writer) 
+            values ((select nvl(max(bno)+1, 1) from board), #{title}, #{content}, #{writer})
+    </insert>
+
+    <!-- 게시글 상세내용 불러오기 -->
+    <select id="boardRead" resultType="com.board.example.dto.BoardDTO">
+            select bno, title, content, writer, regdate, viewcnt
+            from board where bno = #{bno}
+    </select>
+
+    <!-- 게시글 수정하기 -->
+    <update id="boardUpdate">
+            update board set title=#{title}, content=#{content}
+            where bno=#{bno}
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="boardDelete">
+        delete from board where bno = #{bno}
+    </delete>
+</mapper>

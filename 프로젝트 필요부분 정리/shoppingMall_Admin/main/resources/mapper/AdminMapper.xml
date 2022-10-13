@@ -1,0 +1,54 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.vam.mapper.AdminMapper">
+
+    <!--Test
+        @Autowired
+        private AdminMapper mapper;
+        
+        /* 상품 등록 */
+        @Test
+        public void bookEnrollTest() throws Exception{
+          
+          BookVO book = new BookVO();
+          
+          book.setBookName("mapper 테스트");
+          book.setAuthorId(123);
+          book.setPubleYear("2021-03-18");
+          book.setPublisher("출판사");
+          book.setCateCode("0231");
+          book.setBookPrice(20000);
+          book.setBookStock(300);
+          book.setBookDiscount(0.23);
+          book.setBookIntro("책 소개 ");
+          book.setBookContents("책 목차 ");
+          
+          mapper.bookEnroll(book);
+        }      
+      -->
+
+    <!-- 작가 등록 -->
+  	<insert id="bookEnroll">
+  	
+  		INSERT INTO vam_book(bookName, authorId, publeYear, publisher, cateCode, bookPrice, bookStock, bookDiscount, bookIntro, bookContents)
+		values(#{bookName},#{authorId}, #{publeYear},#{publisher},#{cateCode},#{bookPrice},#{bookStock},#{bookDiscount},#{bookIntro},#{bookContents})
+
+  	</insert>
+
+    <!-- 상품 정보 수정 -->
+    <update id="goodsModify">
+
+            update book set bookName = #{bookName}, authorId = #{authorId}, publeYear = #{publeYear}, publisher = #{publisher}, cateCode = ${cateCode}, 
+            bookPrice = #{bookPrice}, bookStock = #{bookStock}, bookDiscount = #{bookDiscount}, bookIntro = #{bookIntro}, bookContents = #{bookContents}, updateDate = now()
+            where bookId = ${bookId}
+    </update>
+
+    <!-- 지정 상품 이미지 전체 삭제-->
+    <delete id="deleteImageAll">
+
+            delete FROM image where bookId = #{bookId}
+
+    </delete>
+
+  </mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="member">
+
+    <!-- 회원 목록 가져오기 -->
+    <select id="memberList"
+        resultTyp="com.example.spring01.model.dto.MemberDTO">
+        select userid, passwd, name, email from member 
+        order by name
+    </select>
+
+    <!-- 회원 가입 -->
+    <insert id="insertMember">
+        insert into member (userid, passwd, name, email) values
+        (#{userid}, #{passwd}, #{name}, #{email})
+    </insert>
+
+    <!-- 회원 정보 상세 보기 -->
+    <select id="viewMember" resultTyp="memberDto">
+        select * from member
+        where userid=#{userid}
+    </select>
+
+    <!-- 회원 정보 수정 -->
+    <update id="updateMember">
+        update member
+        set passwd=#{passwd}, name=#{name}, email=#{email}
+        where userid=#{userid}
+    </update>
+
+    <!-- 비밀번호 체크 -->
+    <select id="checkPw" resultTyp="int">
+        select count(*) form member
+        where userid=#{userid} and passwd=#{passwd}
+    </select>
+
+    <!-- 회원 삭제 -->
+    <delete id="deleteMember">
+        delete from member
+        where userid=#{userid}
+    </delete>
+
+</mapper>    

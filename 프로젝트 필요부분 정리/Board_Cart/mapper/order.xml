@@ -1,0 +1,21 @@
+<insert id="orderInsert">
+	INSERT INTO ORDERED 
+	(ORDERED_NO , ORDERED_TO_NAME , ORDERED_TO_TEL , ORDERED_TO_EMAIL , ORDERED_TO_ADR, ORDERED_TO_POST
+	,ORDERED_FROM_NAME, ORDERED_FROM_TEL , ORDERED_FROM_ADR , ORDERED_FROM_POST
+	,ORDERED_CARTPRICE , ORDERED_ORDERPRICE , ORDERED_CPN_NAME , ORDERED_CPN_DISC , ORDERED_USEPOINT
+	, ORDERED_PAYHOW , ORDERED_MEM_NO ) VALUES(
+	#{ordered_no} , #{ordered_to_name} , #{ordered_to_tel} ,  #{ordered_to_email} , #{ordered_to_adr} , #{ordered_to_post} , 
+	#{ordered_from_name} , #{ordered_from_tel} , #{ordered_from_adr} , #{ordered_from_post} , 
+	#{ordered_cartprice} , #{ordered_orderprice} , #{ordered_cpn_name} , #{ordered_cpn_disc} , #{ordered_usepoint} , 
+	#{ordered_payhow} , #{ordered_mem_no} 
+	)
+	</insert>
+	
+	<insert id="orderItemInsert">
+	INSERT INTO ORDERITEM ( ORDERITEM_NO, ORDERITEM_IMG , ORDERITEM_NAME ,ORDERITEM_OPTION ,ORDERITEM_PRICE ,
+	ORDERITEM_ITEM_NO, ORDERITEM_SELECT_VOL ,ORDERITEM_ORDER_NO,ORDERITEM_MEM_NO) VALUES(
+	(SELECT NVL(MAX(ORDERITEM_NO), 0) + 1 FROM ORDERITEM) , #{orderitem_img} , #{orderitem_name} , #{orderitem_option} , #{orderitem_price} ,
+	 #{orderitem_item_no} , #{orderitem_select_vol} , #{orderitem_order_no} , #{orderitem_mem_no}
+	)
+	
+	</insert>

@@ -1,0 +1,64 @@
+<!-- 
+모든 서블릿이 공유할 수 있는 Bean들이 모인 공간
+공통 bean을 설정
+프로젝트의 어플리케이션 영역 설정
+스프링 MVC 설정과 관련된 여러 처리를 담당
+JSP와는 관련없는 객체(Bean)을 설정 ex) Service, Repository ...
+View와 밀접하지 않은 정보를 기술하는 xml 파일
+외부 jar파일등으로 사용하는 클래스는 bean 태그를 이용해 작성
+ex) DB는 View(JSP)와는 관련이 없으므로, DB에 접속하기 위한 설정은 root-context.xml 에 설정
+
+Context란, Bean들을 다루기 위해 우리가 설정할 수 있는 공간 !
+root-context는 공통 bean을, servlet-context는 servlet 각자의 bean들이 모인 공간 -->
+
+<!--1.datasource 설정: 드라이버 관련-->
+<!--  Database Connection을 생성 -->
+<!-- DB 계정 이름과 패스워드 입력 -->
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+    <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+    <property name="username" value="scott"></property>
+    <property name="password" value="tiger"></property>
+  </bean>
+  
+  <!--2.sqlSessionFactory 설정-->
+  
+      <!-- classpath: 빌드시 컴파일된 class 파일들의 위치 경로 -->
+          <!-- <property> 태그 -->
+          <!--
+          SqlSessionFactoryBean 클래스에서 선언된
+          dataSource, configLocation, mapperLoations 
+          변수들의 값을 할당 받는다!! 
+          -->
+  
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="configLocation" value="classpath:/mybatis-onfi.xml"/>
+      <property name="mapperLoations" value="classpath:/*Mapper.xml"/>
+  </bean>
+  
+      <!-- <constructor-arg> -->
+      <!-- sqlSession bean에 sqlSessionFactory 객체 주입-->
+          <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+            <constructor-arg index="0" ref="sqlSessionFactory" />
+          </bean>
+  
+  <!-- 3. SqlSessionTeplate DB연결&종료-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destory-method="clearCache">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+
+    <!-- org.springframework.jdbc.datasource.DriverManagerDataSource
+    JDBC driver를 이용하여 Database Connection을 생성
+
+    org.mybatis.spring.SqlSessionFactoryBean
+    SqlSessionFactory를 작성하고 Spring DI 컨테이너에 개체를 저장하는 구성 요소
+    myBatis에서는 SqlSession을 생성하기 위해 SqlSessionFactory를 사용
+    표준 MyBatis3에서 SqlSessionFactory는 MyBatis 구성 파일에 정의된 정보를 기반으로 하지만, SqlSessionFactoryBean을 사용하면 MyBatis 구성 파일이 없어도 SqlSessionFactory를 빌드할 수 있음
+
+    org.mybatis.spring.SqlSessionTemplate
+    마이바티스 스프링 연동모듈을 사용하면 SqlSessionFactory를 직접 사용할 필요가 없음
+    SqlSessionTemplate은 마이바티스 스프링 연동모듈의 핵심으로, SqlSession을 구현하고 코드에서 SqlSession를 대체하는 역할을 함.
+
+    < Constructor-args > : 생성자
+    의존하는 객체를 생성자를 통해 전달(주입) 받음 -->

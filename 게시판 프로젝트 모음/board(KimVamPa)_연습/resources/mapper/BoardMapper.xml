@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.va.mapper.BoardMapper">
+  
+    <!-- 검색 조건문-->
+    <sql id="criteria">
+        <trim prefix="where (" suffix=")" prefixOverrides="OR">
+            <foreach collection="typeArr" item="type">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                                title like concat('%',#{keyword},'%')
+                        </when>
+                        <when test="type == 'C'.toString()">
+                                content like concat('%',#{keyword},'$')
+                        </when>
+                        <when test="type == 'W'.toString()">
+                                writer like concat('%',#{keyword},'$')
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+
+    <!-- 게시판 등록 -->
+    <insert id="enroll">
+    
+        insert into vam_board(title, content, writer) values (#{title}, #{content}, #{writer})
+    
+    </insert>
+
+    <!-- 게시판 목록 -->
+    <select id="getList" resultType="com.vam.model.BoardVO">
+    
+        selec * from vam_board
+    
+    </select>
+
+  <!-- 게시물 목록(페이징) -->
+  <select id="getListPaging" resultType="com.vam.model.BoardVO">
+  
+    select * from (
+        select bno, title, writer, regdate, updatedate
+        
+        from vam_board
+
+            <if test="keyword != null">
+                
+                <include refid="criteria"></include>
+
+            </if>
+
+        order by bno desc)as T1
+    )
+  
+  </select>
+
+  </mapper>
